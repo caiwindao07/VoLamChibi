@@ -1,0 +1,2020 @@
+{
+  "byId": {
+    "155": {
+      "name": "Thương Hải Minh Nguyệt",
+      "sect": "VoDang",
+      "route": "Kiếm Pháp",
+      "reqLv": 1,
+      "fx": "m25",
+      "isPassive": false
+    },
+    "151": {
+      "name": "Võ Đang Kiếm Pháp",
+      "sect": "VoDang",
+      "route": "Kiếm Pháp",
+      "reqLv": 10,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "158": {
+      "name": "Kiếm Phi Kinh Thiên",
+      "sect": "VoDang",
+      "route": "Kiếm Pháp",
+      "reqLv": 30,
+      "fx": "spr_wd_10_jfjt_c",
+      "isPassive": false
+    },
+    "267": {
+      "name": "Tam Hoàn Thao Nguyệt",
+      "sect": "VoDang",
+      "route": "Kiếm Pháp",
+      "reqLv": 60,
+      "fx": "m110",
+      "isPassive": false
+    },
+    "368": {
+      "name": "Nhân Kiếm Hợp Nhất",
+      "sect": "VoDang",
+      "route": "Kiếm Pháp",
+      "reqLv": 90,
+      "fx": "m175",
+      "isPassive": false
+    },
+    "1079": {
+      "name": "Kiếm Thủy Tinh Hà",
+      "sect": "VoDang",
+      "route": "Kiếm Pháp",
+      "reqLv": 150,
+      "fx": "spr_wd_10_jfjt_c",
+      "isPassive": false
+    },
+    "153": {
+      "name": "Nộ Lôi Chỉ",
+      "sect": "VoDang",
+      "route": "Quyền Pháp",
+      "reqLv": 1,
+      "fx": "m24",
+      "isPassive": false
+    },
+    "152": {
+      "name": "Võ Đang Quyền Pháp",
+      "sect": "VoDang",
+      "route": "Quyền Pháp",
+      "reqLv": 10,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "164": {
+      "name": "Bác Cấp Nhi Phục",
+      "sect": "VoDang",
+      "route": "Quyền Pháp",
+      "reqLv": 30,
+      "fx": "m28",
+      "isPassive": false
+    },
+    "165": {
+      "name": "Võ Ngã Vô Kiếm",
+      "sect": "VoDang",
+      "route": "Quyền Pháp",
+      "reqLv": 60,
+      "fx": "m29",
+      "isPassive": false
+    },
+    "365": {
+      "name": "Thiên Địa Vô Cực",
+      "sect": "VoDang",
+      "route": "Quyền Pháp",
+      "reqLv": 90,
+      "fx": "m173",
+      "isPassive": false
+    },
+    "1078": {
+      "name": "Tạo Hóa Thái Thanh",
+      "sect": "VoDang",
+      "route": "Quyền Pháp",
+      "reqLv": 150,
+      "fx": "m173",
+      "isPassive": false
+    },
+    "159": {
+      "name": "Thất Tinh Trận",
+      "sect": "VoDang",
+      "route": "Hỗ Trợ",
+      "reqLv": 20,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "160": {
+      "name": "Thê Vân Tung",
+      "sect": "VoDang",
+      "route": "Hỗ Trợ",
+      "reqLv": 40,
+      "fx": "m25",
+      "isPassive": false
+    },
+    "157": {
+      "name": "Tọa Vọng Vô Ngã",
+      "sect": "VoDang",
+      "route": "Hỗ Trợ",
+      "reqLv": 50,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "166": {
+      "name": "Thái Cực Thần Công",
+      "sect": "VoDang",
+      "route": "Hỗ Trợ",
+      "reqLv": 60,
+      "fx": "m25",
+      "isPassive": false
+    },
+    "716": {
+      "name": "Võ Đang Mật Tịch 120",
+      "sect": "VoDang",
+      "route": "Hỗ Trợ",
+      "reqLv": 120,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "11": {
+      "name": "Hoành Tảo Lục Hợp",
+      "sect": "ThieuLam",
+      "route": "Côn Pháp",
+      "reqLv": 1,
+      "fx": "m86",
+      "isPassive": false
+    },
+    "4": {
+      "name": "Thiếu Lâm Côn Pháp",
+      "sect": "ThieuLam",
+      "route": "Côn Pháp",
+      "reqLv": 10,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "319": {
+      "name": "Hoành Tảo Thiên Quân",
+      "sect": "ThieuLam",
+      "route": "Côn Pháp",
+      "reqLv": 90,
+      "fx": "m135",
+      "isPassive": false
+    },
+    "1056": {
+      "name": "Vi Đà Hiến Xử",
+      "sect": "ThieuLam",
+      "route": "Côn Pháp",
+      "reqLv": 150,
+      "fx": "m135",
+      "isPassive": false
+    },
+    "6": {
+      "name": "Thiếu Lâm Đao Pháp",
+      "sect": "ThieuLam",
+      "route": "Đao Pháp",
+      "reqLv": 10,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "318": {
+      "name": "Đạt Ma Độ Giang",
+      "sect": "ThieuLam",
+      "route": "Đao Pháp",
+      "reqLv": 90,
+      "fx": "m86",
+      "isPassive": false
+    },
+    "1057": {
+      "name": "Tam Giới Quy Thiền",
+      "sect": "ThieuLam",
+      "route": "Đao Pháp",
+      "reqLv": 150,
+      "fx": "m86",
+      "isPassive": false
+    },
+    "14": {
+      "name": "Hàng Long Bát Vũ",
+      "sect": "ThieuLam",
+      "route": "Quyền Pháp",
+      "reqLv": 1,
+      "fx": "m66",
+      "isPassive": false
+    },
+    "8": {
+      "name": "Thiếu Lâm Quyền Pháp",
+      "sect": "ThieuLam",
+      "route": "Quyền Pháp",
+      "reqLv": 10,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "10": {
+      "name": "Kim Cang Phục Ma",
+      "sect": "ThieuLam",
+      "route": "Quyền Pháp",
+      "reqLv": 30,
+      "fx": "m63",
+      "isPassive": false
+    },
+    "271": {
+      "name": "Long Trảo Hổ Trảo",
+      "sect": "ThieuLam",
+      "route": "Quyền Pháp",
+      "reqLv": 60,
+      "fx": "m86",
+      "isPassive": false
+    },
+    "321": {
+      "name": "Vô Tướng Trảm",
+      "sect": "ThieuLam",
+      "route": "Quyền Pháp",
+      "reqLv": 90,
+      "fx": "m136",
+      "isPassive": false
+    },
+    "1055": {
+      "name": "Đại Lực Kim Cang Chưởng",
+      "sect": "ThieuLam",
+      "route": "Quyền Pháp",
+      "reqLv": 150,
+      "fx": "m136",
+      "isPassive": false
+    },
+    "15": {
+      "name": "Bất Động Minh Vương",
+      "sect": "ThieuLam",
+      "route": "Hỗ Trợ",
+      "reqLv": 20,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "16": {
+      "name": "La Hán Trận",
+      "sect": "ThieuLam",
+      "route": "Hỗ Trợ",
+      "reqLv": 30,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "20": {
+      "name": "Sư Tử Hống",
+      "sect": "ThieuLam",
+      "route": "Hỗ Trợ",
+      "reqLv": 40,
+      "fx": "m135",
+      "isPassive": false
+    },
+    "21": {
+      "name": "Dịch Cân Kinh",
+      "sect": "ThieuLam",
+      "route": "Hỗ Trợ",
+      "reqLv": 50,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "273": {
+      "name": "Như Lai Thiên Diệp",
+      "sect": "ThieuLam",
+      "route": "Hỗ Trợ",
+      "reqLv": 60,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "709": {
+      "name": "Đại Thừa Như Lai Chú 120",
+      "sect": "ThieuLam",
+      "route": "Hỗ Trợ",
+      "reqLv": 120,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "30": {
+      "name": "Hồi Phong Lạc Nhạn",
+      "sect": "ThienVuong",
+      "route": "Thương Pháp",
+      "reqLv": 1,
+      "fx": "spr_tianhengqiang",
+      "isPassive": false
+    },
+    "23": {
+      "name": "Thiên Vương Thương Pháp",
+      "sect": "ThienVuong",
+      "route": "Thương Pháp",
+      "reqLv": 10,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "35": {
+      "name": "Dương Quan Tam Điệp",
+      "sect": "ThienVuong",
+      "route": "Thương Pháp",
+      "reqLv": 30,
+      "fx": "spr_tianhengqiang",
+      "isPassive": false
+    },
+    "40": {
+      "name": "Đoạn Hồn Thích",
+      "sect": "ThienVuong",
+      "route": "Thương Pháp",
+      "reqLv": 60,
+      "fx": "spr_tianhengqiang",
+      "isPassive": false
+    },
+    "323": {
+      "name": "Truy Tinh Trục Nguyệt",
+      "sect": "ThienVuong",
+      "route": "Thương Pháp",
+      "reqLv": 90,
+      "fx": "spr_tianhengqiang",
+      "isPassive": false
+    },
+    "1059": {
+      "name": "Tung Hoành Bát Hoang",
+      "sect": "ThienVuong",
+      "route": "Thương Pháp",
+      "reqLv": 150,
+      "fx": "spr_tianhengqiang",
+      "isPassive": false
+    },
+    "29": {
+      "name": "Trảm Long Quyết",
+      "sect": "ThienVuong",
+      "route": "Chùy Pháp",
+      "reqLv": 1,
+      "fx": "m86",
+      "isPassive": false
+    },
+    "26": {
+      "name": "Thiên Vương Chùy Pháp",
+      "sect": "ThienVuong",
+      "route": "Chùy Pháp",
+      "reqLv": 10,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "32": {
+      "name": "Vô Tâm Trảm",
+      "sect": "ThienVuong",
+      "route": "Chùy Pháp",
+      "reqLv": 60,
+      "fx": "m86",
+      "isPassive": false
+    },
+    "325": {
+      "name": "Truy Phong Quyết",
+      "sect": "ThienVuong",
+      "route": "Chùy Pháp",
+      "reqLv": 90,
+      "fx": "m86",
+      "isPassive": false
+    },
+    "1060": {
+      "name": "Bá Vương Tố Kim",
+      "sect": "ThienVuong",
+      "route": "Chùy Pháp",
+      "reqLv": 150,
+      "fx": "m86",
+      "isPassive": false
+    },
+    "24": {
+      "name": "Thiên Vương Đao Pháp",
+      "sect": "ThienVuong",
+      "route": "Đao Pháp",
+      "reqLv": 10,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "34": {
+      "name": "Kình Lôi Trảm",
+      "sect": "ThienVuong",
+      "route": "Đao Pháp",
+      "reqLv": 30,
+      "fx": "spr_dandaofuhui1",
+      "isPassive": false
+    },
+    "41": {
+      "name": "Huyết Chiến Bát Phương",
+      "sect": "ThienVuong",
+      "route": "Đao Pháp",
+      "reqLv": 60,
+      "fx": "m48",
+      "isPassive": false
+    },
+    "322": {
+      "name": "Phá Thiên Trảm",
+      "sect": "ThienVuong",
+      "route": "Đao Pháp",
+      "reqLv": 90,
+      "fx": "spr_dandaofuhui1",
+      "isPassive": false
+    },
+    "1058": {
+      "name": "Hào Hùng Trảm",
+      "sect": "ThienVuong",
+      "route": "Đao Pháp",
+      "reqLv": 150,
+      "fx": "spr_dandaofuhui1",
+      "isPassive": false
+    },
+    "33": {
+      "name": "Tĩnh Tâm Quyết",
+      "sect": "ThienVuong",
+      "route": "Hỗ Trợ",
+      "reqLv": 20,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "42": {
+      "name": "Kim Chung Tráo",
+      "sect": "ThienVuong",
+      "route": "Hỗ Trợ",
+      "reqLv": 40,
+      "fx": "spr_tianhengqiang",
+      "isPassive": false
+    },
+    "36": {
+      "name": "Thiên Vương Chiến Ý",
+      "sect": "ThienVuong",
+      "route": "Hỗ Trợ",
+      "reqLv": 60,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "708": {
+      "name": "Thiên Vương Mật Tịch 120",
+      "sect": "ThienVuong",
+      "route": "Hỗ Trợ",
+      "reqLv": 120,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "50": {
+      "name": "Truy Tâm Tiễn",
+      "sect": "DuongMon",
+      "route": "Ám Khí / Tiễn",
+      "reqLv": 1,
+      "fx": "m37",
+      "isPassive": false
+    },
+    "43": {
+      "name": "Đường Môn Ám Khí",
+      "sect": "DuongMon",
+      "route": "Ám Khí / Tiễn",
+      "reqLv": 10,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "47": {
+      "name": "Đoạt Hồn Tiêu",
+      "sect": "DuongMon",
+      "route": "Ám Khí / Tiễn",
+      "reqLv": 30,
+      "fx": "m116",
+      "isPassive": false
+    },
+    "54": {
+      "name": "Mạn Thiên Hoa Vũ",
+      "sect": "DuongMon",
+      "route": "Ám Khí / Tiễn",
+      "reqLv": 60,
+      "fx": "m38",
+      "isPassive": false
+    },
+    "249": {
+      "name": "Tiểu Lý Phi Đao",
+      "sect": "DuongMon",
+      "route": "Ám Khí / Tiễn",
+      "reqLv": 60,
+      "fx": "m106",
+      "isPassive": false
+    },
+    "302": {
+      "name": "Bạo Vũ Lê Hoa",
+      "sect": "DuongMon",
+      "route": "Ám Khí / Tiễn",
+      "reqLv": 90,
+      "fx": "m96",
+      "isPassive": false
+    },
+    "339": {
+      "name": "Nhiếp Hồn Nguyệt Ảnh",
+      "sect": "DuongMon",
+      "route": "Ám Khí / Tiễn",
+      "reqLv": 90,
+      "fx": "m149",
+      "isPassive": false
+    },
+    "342": {
+      "name": "Cửu Cung Phi Tinh",
+      "sect": "DuongMon",
+      "route": "Ám Khí / Tiễn",
+      "reqLv": 90,
+      "fx": "m152",
+      "isPassive": false
+    },
+    "1071": {
+      "name": "Càn Khôn Nhất Trịch",
+      "sect": "DuongMon",
+      "route": "Ám Khí / Tiễn",
+      "reqLv": 150,
+      "fx": "m37",
+      "isPassive": false
+    },
+    "45": {
+      "name": "Tích Lịch Đạn",
+      "sect": "DuongMon",
+      "route": "Cạm Bẫy",
+      "reqLv": 1,
+      "fx": "m35",
+      "isPassive": false
+    },
+    "347": {
+      "name": "Địa Diễm Hỏa",
+      "sect": "DuongMon",
+      "route": "Cạm Bẫy",
+      "reqLv": 30,
+      "fx": "m157",
+      "isPassive": false
+    },
+    "345": {
+      "name": "Hàn Băng Thích",
+      "sect": "DuongMon",
+      "route": "Cạm Bẫy",
+      "reqLv": 60,
+      "fx": "m155",
+      "isPassive": false
+    },
+    "351": {
+      "name": "Loạn Hoàn Kích",
+      "sect": "DuongMon",
+      "route": "Cạm Bẫy",
+      "reqLv": 90,
+      "fx": "m38",
+      "isPassive": false
+    },
+    "58": {
+      "name": "Thiên La Địa Võng",
+      "sect": "DuongMon",
+      "route": "Hỗ Trợ",
+      "reqLv": 20,
+      "fx": "m67",
+      "isPassive": false
+    },
+    "48": {
+      "name": "Tâm Nhãn",
+      "sect": "DuongMon",
+      "route": "Hỗ Trợ",
+      "reqLv": 60,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "710": {
+      "name": "Đường Môn Mật Tịch 120",
+      "sect": "DuongMon",
+      "route": "Hỗ Trợ",
+      "reqLv": 120,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "63": {
+      "name": "Độc Sa Chưởng",
+      "sect": "NguDoc",
+      "route": "Chưởng Pháp",
+      "reqLv": 1,
+      "fx": "m30",
+      "isPassive": false
+    },
+    "62": {
+      "name": "Ngũ Độc Chưởng Pháp",
+      "sect": "NguDoc",
+      "route": "Chưởng Pháp",
+      "reqLv": 10,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "353": {
+      "name": "Âm Phong Thực Cốt",
+      "sect": "NguDoc",
+      "route": "Chưởng Pháp",
+      "reqLv": 90,
+      "fx": "m163",
+      "isPassive": false
+    },
+    "1066": {
+      "name": "Hình Tiêu Cốt Lập",
+      "sect": "NguDoc",
+      "route": "Chưởng Pháp",
+      "reqLv": 150,
+      "fx": "m33",
+      "isPassive": false
+    },
+    "65": {
+      "name": "Huyết Đao Độc Sát",
+      "sect": "NguDoc",
+      "route": "Đao Pháp",
+      "reqLv": 1,
+      "fx": "m31",
+      "isPassive": false
+    },
+    "60": {
+      "name": "Ngũ Độc Đao Pháp",
+      "sect": "NguDoc",
+      "route": "Đao Pháp",
+      "reqLv": 10,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "355": {
+      "name": "Huyền Âm Trảm",
+      "sect": "NguDoc",
+      "route": "Đao Pháp",
+      "reqLv": 90,
+      "fx": "m165",
+      "isPassive": false
+    },
+    "1067": {
+      "name": "U Hồn Phệ Ảnh",
+      "sect": "NguDoc",
+      "route": "Đao Pháp",
+      "reqLv": 150,
+      "fx": "m165",
+      "isPassive": false
+    },
+    "68": {
+      "name": "U Minh Khô Lâu",
+      "sect": "NguDoc",
+      "route": "Bùa Độc / Cổ",
+      "reqLv": 20,
+      "fx": "m32",
+      "isPassive": false
+    },
+    "70": {
+      "name": "Vô Hình Cổ",
+      "sect": "NguDoc",
+      "route": "Bùa Độc / Cổ",
+      "reqLv": 40,
+      "fx": "m30",
+      "isPassive": false
+    },
+    "73": {
+      "name": "Vạn Cổ Thực Tâm",
+      "sect": "NguDoc",
+      "route": "Bùa Độc / Cổ",
+      "reqLv": 60,
+      "fx": "m30",
+      "isPassive": false
+    },
+    "390": {
+      "name": "Đoạn Cân Hủ Cốt",
+      "sect": "NguDoc",
+      "route": "Bùa Độc / Cổ",
+      "reqLv": 90,
+      "fx": "m30",
+      "isPassive": false
+    },
+    "66": {
+      "name": "Tạp Nan Dược Kinh",
+      "sect": "NguDoc",
+      "route": "Hỗ Trợ",
+      "reqLv": 30,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "75": {
+      "name": "Ngũ Độc Kỳ Kinh",
+      "sect": "NguDoc",
+      "route": "Hỗ Trợ",
+      "reqLv": 60,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "711": {
+      "name": "Ngũ Độc Mật Tịch 120",
+      "sect": "NguDoc",
+      "route": "Hỗ Trợ",
+      "reqLv": 120,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "80": {
+      "name": "Phiêu Tuyết Xuyên Vân",
+      "sect": "NgaMi",
+      "route": "Chưởng Pháp",
+      "reqLv": 1,
+      "fx": "m68",
+      "isPassive": false
+    },
+    "79": {
+      "name": "Nga Mi Chưởng Pháp",
+      "sect": "NgaMi",
+      "route": "Chưởng Pháp",
+      "reqLv": 10,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "82": {
+      "name": "Tứ Tượng Đồng Quy",
+      "sect": "NgaMi",
+      "route": "Chưởng Pháp",
+      "reqLv": 30,
+      "fx": "m101",
+      "isPassive": false
+    },
+    "328": {
+      "name": "Tam Nga Tề Tuyết",
+      "sect": "NgaMi",
+      "route": "Chưởng Pháp",
+      "reqLv": 90,
+      "fx": "m142",
+      "isPassive": false
+    },
+    "380": {
+      "name": "Phong Sương Toái Ảnh",
+      "sect": "NgaMi",
+      "route": "Chưởng Pháp",
+      "reqLv": 90,
+      "fx": "m186",
+      "isPassive": false
+    },
+    "1062": {
+      "name": "Băng Vũ Lạc Tinh",
+      "sect": "NgaMi",
+      "route": "Chưởng Pháp",
+      "reqLv": 150,
+      "fx": "m186",
+      "isPassive": false
+    },
+    "85": {
+      "name": "Nhất Diệp Tri Thu",
+      "sect": "NgaMi",
+      "route": "Kiếm Pháp",
+      "reqLv": 1,
+      "fx": "m2",
+      "isPassive": false
+    },
+    "77": {
+      "name": "Nga Mi Kiếm Pháp",
+      "sect": "NgaMi",
+      "route": "Kiếm Pháp",
+      "reqLv": 10,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "1061": {
+      "name": "Kiếm Hoa Vạn Tinh",
+      "sect": "NgaMi",
+      "route": "Kiếm Pháp",
+      "reqLv": 150,
+      "fx": "m186",
+      "isPassive": false
+    },
+    "93": {
+      "name": "Từ Hàng Phổ Độ",
+      "sect": "NgaMi",
+      "route": "Hỗ Trợ",
+      "reqLv": 20,
+      "fx": "m5",
+      "isPassive": false
+    },
+    "89": {
+      "name": "Mộng Điệp",
+      "sect": "NgaMi",
+      "route": "Hỗ Trợ",
+      "reqLv": 40,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "91": {
+      "name": "Phật Quang Phổ Chiếu",
+      "sect": "NgaMi",
+      "route": "Hỗ Trợ",
+      "reqLv": 60,
+      "fx": "m4",
+      "isPassive": false
+    },
+    "252": {
+      "name": "Phật Pháp Vô Biên",
+      "sect": "NgaMi",
+      "route": "Hỗ Trợ",
+      "reqLv": 60,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "712": {
+      "name": "Nga Mi Mật Tịch 120",
+      "sect": "NgaMi",
+      "route": "Hỗ Trợ",
+      "reqLv": 120,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "99": {
+      "name": "Phong Hoa Tuyết Nguyệt",
+      "sect": "ThuyYen",
+      "route": "Đơn Đao",
+      "reqLv": 1,
+      "fx": "m6",
+      "isPassive": false
+    },
+    "95": {
+      "name": "Thúy Yên Đao Pháp",
+      "sect": "ThuyYen",
+      "route": "Đơn Đao",
+      "reqLv": 10,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "105": {
+      "name": "Vũ Đả Lê Hoa",
+      "sect": "ThuyYen",
+      "route": "Đơn Đao",
+      "reqLv": 30,
+      "fx": "m8",
+      "isPassive": false
+    },
+    "336": {
+      "name": "Băng Tung Vô Ảnh",
+      "sect": "ThuyYen",
+      "route": "Đơn Đao",
+      "reqLv": 90,
+      "fx": "m146",
+      "isPassive": false
+    },
+    "1063": {
+      "name": "Băng Tước Hoạt Kê",
+      "sect": "ThuyYen",
+      "route": "Đơn Đao",
+      "reqLv": 150,
+      "fx": "m147",
+      "isPassive": false
+    },
+    "102": {
+      "name": "Phong Quyển Tàn Tuyết",
+      "sect": "ThuyYen",
+      "route": "Song Đao",
+      "reqLv": 1,
+      "fx": "m12",
+      "isPassive": false
+    },
+    "97": {
+      "name": "Thúy Yên Song Đao",
+      "sect": "ThuyYen",
+      "route": "Song Đao",
+      "reqLv": 10,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "111": {
+      "name": "Bích Hải Triều Sinh",
+      "sect": "ThuyYen",
+      "route": "Song Đao",
+      "reqLv": 60,
+      "fx": "m10",
+      "isPassive": false
+    },
+    "337": {
+      "name": "Băng Tâm Tiên Tử",
+      "sect": "ThuyYen",
+      "route": "Song Đao",
+      "reqLv": 90,
+      "fx": "m147",
+      "isPassive": false
+    },
+    "1064": {
+      "name": "Băng Ngưng Hãn Yên",
+      "sect": "ThuyYen",
+      "route": "Song Đao",
+      "reqLv": 150,
+      "fx": "m147",
+      "isPassive": false
+    },
+    "100": {
+      "name": "Hộ Thể Hàn Băng",
+      "sect": "ThuyYen",
+      "route": "Hỗ Trợ",
+      "reqLv": 20,
+      "fx": "m12",
+      "isPassive": false
+    },
+    "109": {
+      "name": "Tuyết Ảnh",
+      "sect": "ThuyYen",
+      "route": "Hỗ Trợ",
+      "reqLv": 40,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "114": {
+      "name": "Băng Cốt Tuyết Tâm",
+      "sect": "ThuyYen",
+      "route": "Hỗ Trợ",
+      "reqLv": 60,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "713": {
+      "name": "Thúy Yên Mật Tịch 120",
+      "sect": "ThuyYen",
+      "route": "Hỗ Trợ",
+      "reqLv": 120,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "122": {
+      "name": "Kiến Nhân Thần Thủ",
+      "sect": "CaiBang",
+      "route": "Chưởng Pháp",
+      "reqLv": 1,
+      "fx": "m46",
+      "isPassive": false
+    },
+    "116": {
+      "name": "Cái Bang Chưởng Pháp",
+      "sect": "CaiBang",
+      "route": "Chưởng Pháp",
+      "reqLv": 10,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "128": {
+      "name": "Kháng Long Hữu Hối",
+      "sect": "CaiBang",
+      "route": "Chưởng Pháp",
+      "reqLv": 60,
+      "fx": "m48",
+      "isPassive": false
+    },
+    "357": {
+      "name": "Phi Long Tại Thiên",
+      "sect": "CaiBang",
+      "route": "Chưởng Pháp",
+      "reqLv": 90,
+      "fx": "m166",
+      "isPassive": false
+    },
+    "1073": {
+      "name": "Thời Thừa Lục Long",
+      "sect": "CaiBang",
+      "route": "Chưởng Pháp",
+      "reqLv": 150,
+      "fx": "m166",
+      "isPassive": false
+    },
+    "119": {
+      "name": "Diên Môn Thác Bát",
+      "sect": "CaiBang",
+      "route": "Bổng Pháp",
+      "reqLv": 1,
+      "fx": "m45",
+      "isPassive": false
+    },
+    "115": {
+      "name": "Cái Bang Bổng Pháp",
+      "sect": "CaiBang",
+      "route": "Bổng Pháp",
+      "reqLv": 10,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "125": {
+      "name": "Bổng Đả Ác Cẩu",
+      "sect": "CaiBang",
+      "route": "Bổng Pháp",
+      "reqLv": 60,
+      "fx": "m47",
+      "isPassive": false
+    },
+    "359": {
+      "name": "Thiên Hạ Vô Cẩu",
+      "sect": "CaiBang",
+      "route": "Bổng Pháp",
+      "reqLv": 90,
+      "fx": "m168",
+      "isPassive": false
+    },
+    "1074": {
+      "name": "Bổng Huỳnh Lược Địa",
+      "sect": "CaiBang",
+      "route": "Bổng Pháp",
+      "reqLv": 150,
+      "fx": "m168",
+      "isPassive": false
+    },
+    "360": {
+      "name": "Tiêu Diêu Công",
+      "sect": "CaiBang",
+      "route": "Hỗ Trợ",
+      "reqLv": 40,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "130": {
+      "name": "Túy Điệp Cuồng Vũ",
+      "sect": "CaiBang",
+      "route": "Hỗ Trợ",
+      "reqLv": 60,
+      "fx": "m46",
+      "isPassive": false
+    },
+    "714": {
+      "name": "Cái Bang Mật Tịch 120",
+      "sect": "CaiBang",
+      "route": "Hỗ Trợ",
+      "reqLv": 120,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "135": {
+      "name": "Tàn Dương Như Huyết",
+      "sect": "ThienNhan",
+      "route": "Mâu Pháp",
+      "reqLv": 1,
+      "fx": "m54",
+      "isPassive": false
+    },
+    "132": {
+      "name": "Thiên Nhẫn Mâu Pháp",
+      "sect": "ThienNhan",
+      "route": "Mâu Pháp",
+      "reqLv": 10,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "141": {
+      "name": "Liệt Hỏa Tình Thiên",
+      "sect": "ThienNhan",
+      "route": "Mâu Pháp",
+      "reqLv": 60,
+      "fx": "m56",
+      "isPassive": false
+    },
+    "361": {
+      "name": "Vân Long Kích",
+      "sect": "ThienNhan",
+      "route": "Mâu Pháp",
+      "reqLv": 90,
+      "fx": "m169",
+      "isPassive": false
+    },
+    "1075": {
+      "name": "Giang Hải Nộ Lan",
+      "sect": "ThienNhan",
+      "route": "Mâu Pháp",
+      "reqLv": 150,
+      "fx": "m169",
+      "isPassive": false
+    },
+    "145": {
+      "name": "Đơn Chỉ Liệt Diệm",
+      "sect": "ThienNhan",
+      "route": "Đao Pháp",
+      "reqLv": 1,
+      "fx": "m57",
+      "isPassive": false
+    },
+    "131": {
+      "name": "Thiên Nhẫn Đao Pháp",
+      "sect": "ThienNhan",
+      "route": "Đao Pháp",
+      "reqLv": 10,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "148": {
+      "name": "Ma Diễm Thất Sát",
+      "sect": "ThienNhan",
+      "route": "Đao Pháp",
+      "reqLv": 60,
+      "fx": "m58",
+      "isPassive": false
+    },
+    "362": {
+      "name": "Thiên Ngoại Lưu Tinh",
+      "sect": "ThienNhan",
+      "route": "Đao Pháp",
+      "reqLv": 90,
+      "fx": "m171",
+      "isPassive": false
+    },
+    "1076": {
+      "name": "Tịch Hỏa Liêu Nguyên",
+      "sect": "ThienNhan",
+      "route": "Đao Pháp",
+      "reqLv": 150,
+      "fx": "m171",
+      "isPassive": false
+    },
+    "364": {
+      "name": "Bi Tô Thanh Phong",
+      "sect": "ThienNhan",
+      "route": "Hỗ Trợ",
+      "reqLv": 40,
+      "fx": "m20",
+      "isPassive": false
+    },
+    "150": {
+      "name": "Thiên Ma Giải Thể",
+      "sect": "ThienNhan",
+      "route": "Hỗ Trợ",
+      "reqLv": 60,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "715": {
+      "name": "Thiên Nhẫn Mật Tịch 120",
+      "sect": "ThienNhan",
+      "route": "Hỗ Trợ",
+      "reqLv": 120,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "169": {
+      "name": "Hô Phong Pháp",
+      "sect": "ConLon",
+      "route": "Đao Pháp",
+      "reqLv": 1,
+      "fx": "m14",
+      "isPassive": false
+    },
+    "167": {
+      "name": "Côn Lôn Đao Pháp",
+      "sect": "ConLon",
+      "route": "Đao Pháp",
+      "reqLv": 10,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "176": {
+      "name": "Cuồng Phong Sậu Điện",
+      "sect": "ConLon",
+      "route": "Đao Pháp",
+      "reqLv": 30,
+      "fx": "m16",
+      "isPassive": false
+    },
+    "372": {
+      "name": "Ngạo Tuyết Tiêu Phong",
+      "sect": "ConLon",
+      "route": "Đao Pháp",
+      "reqLv": 90,
+      "fx": "m178",
+      "isPassive": false
+    },
+    "1080": {
+      "name": "Cửu Thiên Cuồng Phong",
+      "sect": "ConLon",
+      "route": "Đao Pháp",
+      "reqLv": 150,
+      "fx": "m16",
+      "isPassive": false
+    },
+    "179": {
+      "name": "Cuồng Lôi Chấn Địa",
+      "sect": "ConLon",
+      "route": "Kiếm Pháp",
+      "reqLv": 1,
+      "fx": "m17",
+      "isPassive": false
+    },
+    "168": {
+      "name": "Côn Lôn Kiếm Pháp",
+      "sect": "ConLon",
+      "route": "Kiếm Pháp",
+      "reqLv": 10,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "171": {
+      "name": "Thanh Phong Phù",
+      "sect": "ConLon",
+      "route": "Kiếm Pháp",
+      "reqLv": 30,
+      "fx": "m19",
+      "isPassive": false
+    },
+    "172": {
+      "name": "Thiên Tế Tấn Lôi",
+      "sect": "ConLon",
+      "route": "Kiếm Pháp",
+      "reqLv": 60,
+      "fx": "m197",
+      "isPassive": false
+    },
+    "375": {
+      "name": "Lôi Động Cửu Thiên",
+      "sect": "ConLon",
+      "route": "Kiếm Pháp",
+      "reqLv": 90,
+      "fx": "m181",
+      "isPassive": false
+    },
+    "1081": {
+      "name": "Thiên Lôi Chấn Nhạc",
+      "sect": "ConLon",
+      "route": "Kiếm Pháp",
+      "reqLv": 150,
+      "fx": "m181",
+      "isPassive": false
+    },
+    "182": {
+      "name": "Ngũ Lôi Chánh Pháp",
+      "sect": "ConLon",
+      "route": "Hỗ Trợ",
+      "reqLv": 40,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "275": {
+      "name": "Sương Ngạo Côn Lôn",
+      "sect": "ConLon",
+      "route": "Hỗ Trợ",
+      "reqLv": 60,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "717": {
+      "name": "Côn Lôn Mật Tịch 120",
+      "sect": "ConLon",
+      "route": "Hỗ Trợ",
+      "reqLv": 120,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "1347": {
+      "name": "Bạch Hồng Quán Nhật",
+      "sect": "HoaSan",
+      "route": "Kiếm Tông",
+      "reqLv": 1,
+      "fx": "spr_xianzhongqiusheng",
+      "isPassive": false
+    },
+    "1349": {
+      "name": "Kiếm Tông Tổng Quyết",
+      "sect": "HoaSan",
+      "route": "Kiếm Tông",
+      "reqLv": 10,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "1354": {
+      "name": "Hi Di Kiếm Pháp",
+      "sect": "HoaSan",
+      "route": "Kiếm Tông",
+      "reqLv": 30,
+      "fx": "spr_xianzhongqiusheng",
+      "isPassive": false
+    },
+    "1364": {
+      "name": "Đoạt Mệnh Tam Tiên Kiếm",
+      "sect": "HoaSan",
+      "route": "Kiếm Tông",
+      "reqLv": 90,
+      "fx": "spr_xianzhongqiusheng",
+      "isPassive": false
+    },
+    "1369": {
+      "name": "Cửu Kiếm Hợp Nhất",
+      "sect": "HoaSan",
+      "route": "Kiếm Tông",
+      "reqLv": 150,
+      "fx": "spr_xianzhongqiusheng",
+      "isPassive": false
+    },
+    "1372": {
+      "name": "Thanh Vân Tống Sảng",
+      "sect": "HoaSan",
+      "route": "Khí Tông",
+      "reqLv": 1,
+      "fx": "spr_xingluojian_zd",
+      "isPassive": false
+    },
+    "1376": {
+      "name": "Long Huyền Kiếm Khí",
+      "sect": "HoaSan",
+      "route": "Khí Tông",
+      "reqLv": 30,
+      "fx": "spr_xingluojian_zd",
+      "isPassive": false
+    },
+    "1382": {
+      "name": "Phách Thạch Phá Ngọc",
+      "sect": "HoaSan",
+      "route": "Khí Tông",
+      "reqLv": 90,
+      "fx": "spr_xingluojian_zd",
+      "isPassive": false
+    },
+    "1384": {
+      "name": "Thần Quang Toàn Nhiễu",
+      "sect": "HoaSan",
+      "route": "Khí Tông",
+      "reqLv": 150,
+      "fx": "spr_xingluojian_zd",
+      "isPassive": false
+    },
+    "1358": {
+      "name": "Huyền Nham Vạn Diệp",
+      "sect": "HoaSan",
+      "route": "Hỗ Trợ",
+      "reqLv": 60,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "1365": {
+      "name": "Tử Hà Kiếm Khí 120",
+      "sect": "HoaSan",
+      "route": "Hỗ Trợ",
+      "reqLv": 120,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "1972": {
+      "name": "Đoạt Tiêu Dương Kỳ",
+      "sect": "VuHon",
+      "route": "Vũ Hồn Đao",
+      "reqLv": 1,
+      "fx": "spr_wu_70_wgsx_a",
+      "isPassive": false
+    },
+    "1975": {
+      "name": "Vũ Hồn Đao Pháp",
+      "sect": "VuHon",
+      "route": "Vũ Hồn Đao",
+      "reqLv": 10,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "1977": {
+      "name": "Hàn Sơn Kỳ",
+      "sect": "VuHon",
+      "route": "Vũ Hồn Đao",
+      "reqLv": 30,
+      "fx": "spr_wu_70_wgsx_a",
+      "isPassive": false
+    },
+    "1983": {
+      "name": "Khát Ẩm Hùng Nộ",
+      "sect": "VuHon",
+      "route": "Vũ Hồn Đao",
+      "reqLv": 90,
+      "fx": "spr_wu_70_wgsx_a",
+      "isPassive": false
+    },
+    "1985": {
+      "name": "Trừ Gian Diệt Nịnh",
+      "sect": "VuHon",
+      "route": "Vũ Hồn Đao",
+      "reqLv": 150,
+      "fx": "spr_wu_70_wgsx_a",
+      "isPassive": false
+    },
+    "1963": {
+      "name": "Triều Thiên Khuyết",
+      "sect": "VuHon",
+      "route": "Trấn Biên Chùy",
+      "reqLv": 1,
+      "fx": "spr_wu_70_wgsx_a",
+      "isPassive": false
+    },
+    "1964": {
+      "name": "Vũ Hồn Đoản Pháp",
+      "sect": "VuHon",
+      "route": "Trấn Biên Chùy",
+      "reqLv": 10,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "1967": {
+      "name": "Trấn Biên Chùy",
+      "sect": "VuHon",
+      "route": "Trấn Biên Chùy",
+      "reqLv": 90,
+      "fx": "spr_wu_70_wgsx_a",
+      "isPassive": false
+    },
+    "1969": {
+      "name": "Huy Sư Diệt Lỗ",
+      "sect": "VuHon",
+      "route": "Trấn Biên Chùy",
+      "reqLv": 150,
+      "fx": "spr_wu_70_wgsx_a",
+      "isPassive": false
+    },
+    "1982": {
+      "name": "Vũ Mục Di Chí",
+      "sect": "VuHon",
+      "route": "Hỗ Trợ",
+      "reqLv": 60,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "1984": {
+      "name": "Vũ Hồn Bí Kíp 120",
+      "sect": "VuHon",
+      "route": "Hỗ Trợ",
+      "reqLv": 120,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "1881": {
+      "name": "Ngô Cụ Song Tuyệt",
+      "sect": "TieuDao",
+      "route": "Cầm Pháp",
+      "reqLv": 1,
+      "fx": "spr_msl_536",
+      "isPassive": false
+    },
+    "1906": {
+      "name": "Tiêu Dao Cầm Pháp",
+      "sect": "TieuDao",
+      "route": "Cầm Pháp",
+      "reqLv": 10,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "1907": {
+      "name": "Loạn Nhịp Bình Sa",
+      "sect": "TieuDao",
+      "route": "Cầm Pháp",
+      "reqLv": 30,
+      "fx": "spr_msl_543",
+      "isPassive": false
+    },
+    "1910": {
+      "name": "Cao Sơn Lưu Thủy",
+      "sect": "TieuDao",
+      "route": "Cầm Pháp",
+      "reqLv": 90,
+      "fx": "spr_msl_545",
+      "isPassive": false
+    },
+    "1911": {
+      "name": "Mai Hoa Tam Lộng",
+      "sect": "TieuDao",
+      "route": "Cầm Pháp",
+      "reqLv": 150,
+      "fx": "spr_msl_546",
+      "isPassive": false
+    },
+    "1882": {
+      "name": "Tiêu Dao Kiếm Pháp",
+      "sect": "TieuDao",
+      "route": "Kiếm Pháp",
+      "reqLv": 10,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "1885": {
+      "name": "Sa Toái Lục Tinh",
+      "sect": "TieuDao",
+      "route": "Kiếm Pháp",
+      "reqLv": 30,
+      "fx": "spr_msl_537",
+      "isPassive": false
+    },
+    "1891": {
+      "name": "Phi Vân Kiếm Quyết",
+      "sect": "TieuDao",
+      "route": "Kiếm Pháp",
+      "reqLv": 90,
+      "fx": "spr_msl_536",
+      "isPassive": false
+    },
+    "1896": {
+      "name": "Thập Bộ Nhất Sát",
+      "sect": "TieuDao",
+      "route": "Kiếm Pháp",
+      "reqLv": 150,
+      "fx": "spr_msl_541",
+      "isPassive": false
+    },
+    "1890": {
+      "name": "Thiên Lý Độc Hành",
+      "sect": "TieuDao",
+      "route": "Hỗ Trợ",
+      "reqLv": 60,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "1894": {
+      "name": "Tiêu Dao Bí Kíp 120",
+      "sect": "TieuDao",
+      "route": "Hỗ Trợ",
+      "reqLv": 120,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "1920": {
+      "name": "Thánh Hỏa Phần Tâm",
+      "sect": "MinhGiao",
+      "route": "Thánh Hỏa Kiếm",
+      "reqLv": 1,
+      "fx": "spr_mj_10_shfx_d1",
+      "isPassive": false
+    },
+    "1921": {
+      "name": "Minh Giáo Kiếm Pháp",
+      "sect": "MinhGiao",
+      "route": "Thánh Hỏa Kiếm",
+      "reqLv": 10,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "1927": {
+      "name": "Vạn Vật Câu Phần",
+      "sect": "MinhGiao",
+      "route": "Thánh Hỏa Kiếm",
+      "reqLv": 60,
+      "fx": "spr_mj_50_wwjf_d",
+      "isPassive": false
+    },
+    "1945": {
+      "name": "Hoàng Hỏa Ngọc Phần",
+      "sect": "MinhGiao",
+      "route": "Thánh Hỏa Kiếm",
+      "reqLv": 90,
+      "fx": "spr_mj_130_jm_c",
+      "isPassive": false
+    },
+    "1948": {
+      "name": "Vạn Lý Liêu Nguyên",
+      "sect": "MinhGiao",
+      "route": "Thánh Hỏa Kiếm",
+      "reqLv": 150,
+      "fx": "spr_mj_90_shly_d",
+      "isPassive": false
+    },
+    "1933": {
+      "name": "Khai Thiên Thức",
+      "sect": "MinhGiao",
+      "route": "Chùy Pháp",
+      "reqLv": 1,
+      "fx": "spr_mj_10_kts_a",
+      "isPassive": false
+    },
+    "1934": {
+      "name": "Minh Giáo Chùy Pháp",
+      "sect": "MinhGiao",
+      "route": "Chùy Pháp",
+      "reqLv": 10,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "1936": {
+      "name": "Khốn Hổ Vạn Tiêu",
+      "sect": "MinhGiao",
+      "route": "Chùy Pháp",
+      "reqLv": 50,
+      "fx": "spr_mj_50_pysf_a",
+      "isPassive": false
+    },
+    "1946": {
+      "name": "Lôi Đình Nhất Kích",
+      "sect": "MinhGiao",
+      "route": "Chùy Pháp",
+      "reqLv": 90,
+      "fx": "spr_mj_130_cm_c1",
+      "isPassive": false
+    },
+    "1924": {
+      "name": "Thâu Thiên Hoán Nhật",
+      "sect": "MinhGiao",
+      "route": "Hỗ Trợ",
+      "reqLv": 50,
+      "fx": "spr_mj_10_kts_a",
+      "isPassive": false
+    },
+    "1930": {
+      "name": "Thánh Hỏa Liêu Nguyên",
+      "sect": "MinhGiao",
+      "route": "Hỗ Trợ",
+      "reqLv": 60,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "1943": {
+      "name": "Liệt Diễm Thao Thiên 120",
+      "sect": "MinhGiao",
+      "route": "Hỗ Trợ",
+      "reqLv": 120,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "1720": {
+      "name": "Đơn Đao Phổ Hội",
+      "sect": "BaDao",
+      "route": "Bá Đao Pháp",
+      "reqLv": 1,
+      "fx": "spr_dandaofuhui1",
+      "isPassive": false
+    },
+    "1721": {
+      "name": "Bá Đao Tâm Pháp",
+      "sect": "BaDao",
+      "route": "Bá Đao Pháp",
+      "reqLv": 10,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "1723": {
+      "name": "Long Uyển Nguyệt Khiếu",
+      "sect": "BaDao",
+      "route": "Bá Đao Pháp",
+      "reqLv": 30,
+      "fx": "spr_yanyuexiao3",
+      "isPassive": false
+    },
+    "1729": {
+      "name": "Nhất Kỵ Đương Thiên",
+      "sect": "BaDao",
+      "route": "Bá Đao Pháp",
+      "reqLv": 90,
+      "fx": "spr_yijidangqian",
+      "isPassive": false
+    },
+    "1736": {
+      "name": "Bá Đao Quyết",
+      "sect": "BaDao",
+      "route": "Bá Đao Pháp",
+      "reqLv": 150,
+      "fx": "spr_pofuchenzhou2",
+      "isPassive": false
+    },
+    "1735": {
+      "name": "Bình Giang Đoạn Nguyệt",
+      "sect": "BaDao",
+      "route": "Trảm Mã Đao",
+      "reqLv": 1,
+      "fx": "spr_ba_10_pjdy_a",
+      "isPassive": false
+    },
+    "1738": {
+      "name": "Long Tượng Hổ Bộ",
+      "sect": "BaDao",
+      "route": "Trảm Mã Đao",
+      "reqLv": 50,
+      "fx": "spr_longxianghubu1",
+      "isPassive": false
+    },
+    "1745": {
+      "name": "Phá Phủ Trầm Châu",
+      "sect": "BaDao",
+      "route": "Trảm Mã Đao",
+      "reqLv": 90,
+      "fx": "spr_pofuchenzhou2",
+      "isPassive": false
+    },
+    "1730": {
+      "name": "Đao Phong Thiết Kỵ",
+      "sect": "BaDao",
+      "route": "Hỗ Trợ",
+      "reqLv": 60,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "1728": {
+      "name": "Cang Nguyên Trấn Khải 120",
+      "sect": "BaDao",
+      "route": "Hỗ Trợ",
+      "reqLv": 120,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "1858": {
+      "name": "Lưu Vân Tiễn",
+      "sect": "DuongGia",
+      "route": "Dương Môn Cung",
+      "reqLv": 1,
+      "fx": "spr_liuyunjian",
+      "isPassive": false
+    },
+    "1860": {
+      "name": "Dương Môn Cung Pháp",
+      "sect": "DuongGia",
+      "route": "Dương Môn Cung",
+      "reqLv": 10,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "1765": {
+      "name": "Huyễn Thân Quyết",
+      "sect": "DuongGia",
+      "route": "Dương Môn Cung",
+      "reqLv": 40,
+      "fx": "spr_liuyunjian",
+      "isPassive": false
+    },
+    "1867": {
+      "name": "Tinh Lạc Tiễn",
+      "sect": "DuongGia",
+      "route": "Dương Môn Cung",
+      "reqLv": 90,
+      "fx": "spr_xingluojian_zd",
+      "isPassive": false
+    },
+    "1870": {
+      "name": "Bá Vương Tương Phùng",
+      "sect": "DuongGia",
+      "route": "Dương Môn Cung",
+      "reqLv": 150,
+      "fx": "spr_liuyunjian_new2",
+      "isPassive": false
+    },
+    "1859": {
+      "name": "Thiên Hoành Thương",
+      "sect": "DuongGia",
+      "route": "Dương Môn Thương",
+      "reqLv": 1,
+      "fx": "spr_tianhengqiang",
+      "isPassive": false
+    },
+    "1861": {
+      "name": "Dương Môn Thương Pháp",
+      "sect": "DuongGia",
+      "route": "Dương Môn Thương",
+      "reqLv": 10,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "1768": {
+      "name": "Long Cuồng Quyết",
+      "sect": "DuongGia",
+      "route": "Dương Môn Thương",
+      "reqLv": 60,
+      "fx": "spr_tianhengqiang",
+      "isPassive": false
+    },
+    "1868": {
+      "name": "Đảo Hải Thương",
+      "sect": "DuongGia",
+      "route": "Dương Môn Thương",
+      "reqLv": 90,
+      "fx": "spr_daohaiqiang",
+      "isPassive": false
+    },
+    "1871": {
+      "name": "Bôn Lang Thương",
+      "sect": "DuongGia",
+      "route": "Dương Môn Thương",
+      "reqLv": 150,
+      "fx": "spr_benlangqiang",
+      "isPassive": false
+    },
+    "1866": {
+      "name": "Phá Trận Vô Song",
+      "sect": "DuongGia",
+      "route": "Hỗ Trợ",
+      "reqLv": 60,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "1779": {
+      "name": "Ngạo Huyết Chiến Ý 120",
+      "sect": "DuongGia",
+      "route": "Hỗ Trợ",
+      "reqLv": 120,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "2200": {
+      "name": "Thần Chỉ Điểm Huyệt",
+      "sect": "DoanThi",
+      "route": "Chỉ Pháp",
+      "reqLv": 1,
+      "fx": "spr_ds_10_szdx_a",
+      "isPassive": false
+    },
+    "2201": {
+      "name": "Đoàn Thị Chỉ Pháp",
+      "sect": "DoanThi",
+      "route": "Chỉ Pháp",
+      "reqLv": 10,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "2202": {
+      "name": "Nhất Dương Chỉ",
+      "sect": "DoanThi",
+      "route": "Chỉ Pháp",
+      "reqLv": 30,
+      "fx": "spr_ds_30_yyz_c",
+      "isPassive": false
+    },
+    "2208": {
+      "name": "Càn Dương Thần Chỉ",
+      "sect": "DoanThi",
+      "route": "Chỉ Pháp",
+      "reqLv": 90,
+      "fx": "spr_ds_10_szdx_a",
+      "isPassive": false
+    },
+    "2211": {
+      "name": "Đoàn Thị Chỉ 120",
+      "sect": "DoanThi",
+      "route": "Chỉ Pháp",
+      "reqLv": 120,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "2217": {
+      "name": "Lục Kiếm Tự Phát",
+      "sect": "DoanThi",
+      "route": "Kiếm Khí",
+      "reqLv": 30,
+      "fx": "spr_ds_10_szdx_a",
+      "isPassive": false
+    },
+    "2220": {
+      "name": "Lục Mạch Thần Kiếm",
+      "sect": "DoanThi",
+      "route": "Kiếm Khí",
+      "reqLv": 90,
+      "fx": "spr_ds_90_lmsj_c",
+      "isPassive": false
+    },
+    "2230": {
+      "name": "Khí Thôn Vạn Lý",
+      "sect": "DoanThi",
+      "route": "Kiếm Khí",
+      "reqLv": 150,
+      "fx": "spr_ds_130_qd_c",
+      "isPassive": false
+    },
+    "2203": {
+      "name": "Lăng Ba Vi Bộ",
+      "sect": "DoanThi",
+      "route": "Hỗ Trợ",
+      "reqLv": 40,
+      "fx": "spr_ds_50_lbwb_a",
+      "isPassive": false
+    },
+    "2218": {
+      "name": "Khô Vinh Thiền Công",
+      "sect": "DoanThi",
+      "route": "Hỗ Trợ",
+      "reqLv": 60,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "2223": {
+      "name": "Sơ Ảnh Ám Hương 120",
+      "sect": "DoanThi",
+      "route": "Hỗ Trợ",
+      "reqLv": 120,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "2261": {
+      "name": "Ngọc Nữ Kiếm Pháp",
+      "sect": "CoMo",
+      "route": "Kiếm Pháp",
+      "reqLv": 1,
+      "fx": "spr_jgm_90_gyph_c",
+      "isPassive": false
+    },
+    "2265": {
+      "name": "Song Kiếm Pháp",
+      "sect": "CoMo",
+      "route": "Kiếm Pháp",
+      "reqLv": 30,
+      "fx": "spr_jgm_50_byhw_c",
+      "isPassive": false
+    },
+    "2272": {
+      "name": "Cổ Mộ Kiếm Quyết",
+      "sect": "CoMo",
+      "route": "Kiếm Pháp",
+      "reqLv": 90,
+      "fx": "spr_jgm_110_znwz_c",
+      "isPassive": false
+    },
+    "2280": {
+      "name": "Cổ Mộ Kiếm Quyết 150",
+      "sect": "CoMo",
+      "route": "Kiếm Pháp",
+      "reqLv": 150,
+      "fx": "spr_jgm_120_ftw_c",
+      "isPassive": false
+    },
+    "2267": {
+      "name": "Băng Phách Ngân Châm",
+      "sect": "CoMo",
+      "route": "Ám Khí",
+      "reqLv": 1,
+      "fx": "spr_zgm_40_bpyz_c",
+      "isPassive": false
+    },
+    "2278": {
+      "name": "Thiên Nữ Tố Suất",
+      "sect": "CoMo",
+      "route": "Ám Khí",
+      "reqLv": 90,
+      "fx": "spr_zgm_70_yfz_c",
+      "isPassive": false
+    },
+    "2273": {
+      "name": "Cổ Mộ Tâm Pháp",
+      "sect": "CoMo",
+      "route": "Hỗ Trợ",
+      "reqLv": 60,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "2276": {
+      "name": "Cổ Mộ Mật Tịch 120",
+      "sect": "CoMo",
+      "route": "Hỗ Trợ",
+      "reqLv": 120,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "2281": {
+      "name": "Tam Hoàn Đạo Nguyệt",
+      "sect": "ToanChan",
+      "route": "Kiếm Pháp",
+      "reqLv": 1,
+      "fx": "spr_npc_l_range_earth_c",
+      "isPassive": false
+    },
+    "2282": {
+      "name": "Toàn Chân Kiếm Pháp",
+      "sect": "ToanChan",
+      "route": "Kiếm Pháp",
+      "reqLv": 10,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "2285": {
+      "name": "Kiếm Phi Kinh Thiên",
+      "sect": "ToanChan",
+      "route": "Kiếm Pháp",
+      "reqLv": 50,
+      "fx": "spr_wd_10_jfjt_c",
+      "isPassive": false
+    },
+    "2288": {
+      "name": "Nhất Dương Phong Lôi",
+      "sect": "ToanChan",
+      "route": "Kiếm Pháp",
+      "reqLv": 90,
+      "fx": "spr_zgm_110_qzzh_c",
+      "isPassive": false
+    },
+    "2300": {
+      "name": "Toàn Chân Kiếm Quyết 150",
+      "sect": "ToanChan",
+      "route": "Kiếm Pháp",
+      "reqLv": 150,
+      "fx": "spr_wd_10_jfjt_c",
+      "isPassive": false
+    },
+    "2286": {
+      "name": "Thái Ất Chân Khí",
+      "sect": "ToanChan",
+      "route": "Khí Công",
+      "reqLv": 60,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "2283": {
+      "name": "Thê Vân Tung",
+      "sect": "ToanChan",
+      "route": "Hỗ Trợ",
+      "reqLv": 30,
+      "fx": "spr_wd_10_jfjt_c",
+      "isPassive": false
+    },
+    "2284": {
+      "name": "Tọa Vọng Vô Ngã",
+      "sect": "ToanChan",
+      "route": "Hỗ Trợ",
+      "reqLv": 40,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "2287": {
+      "name": "Thất Tinh Trận",
+      "sect": "ToanChan",
+      "route": "Hỗ Trợ",
+      "reqLv": 70,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "2298": {
+      "name": "Thái Cực Kiếm Pháp",
+      "sect": "ToanChan",
+      "route": "Hỗ Trợ",
+      "reqLv": 110,
+      "fx": "c1",
+      "isPassive": true
+    },
+    "2292": {
+      "name": "Toàn Chân Mật Tịch 120",
+      "sect": "ToanChan",
+      "route": "Hỗ Trợ",
+      "reqLv": 120,
+      "fx": "c1",
+      "isPassive": true
+    }
+  }
+}

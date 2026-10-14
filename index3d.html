@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, user-scalable=no">
+  <title>Võ Lâm Chibi 3D · True 3D WebGL Edition</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="js/three.min.js"></script>
+  <script src="js/OrbitControls.js"></script>
+  <script src="js/chibi_render.js"></script>
+  <style>
+    :root {
+      --lacquer: #2b1813;
+      --lacquer-2: #40241a;
+      --bronze: #c69c4d;
+      --bronze-dim: #8a6a33;
+      --jade: #4fa07c;
+      --paper: #f1e5c9;
+      --paper-dim: #bfae8c;
+      --cinnabar: #c63d2c;
+      --azure: #3c73bd;
+      --gold: #e8b949;
+      --font: "Noto Serif", Georgia, "Times New Roman", serif;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; padding: 0; width: 100%; height: 100%;
+      overflow: hidden; background: #16100c;
+      font-family: var(--font); color: var(--paper);
+      user-select: none; -webkit-user-select: none;
+    }
+    #canvas3d {
+      position: absolute; inset: 0; width: 100%; height: 100%; display: block;
+    }
+
+    .plate {
+      background: linear-gradient(180deg, var(--lacquer-2), var(--lacquer));
+      border: 1px solid var(--bronze-dim);
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .5), 0 6px 18px rgba(0, 0, 0, .45);
+      border-radius: 6px;
+    }
+    button, .btn { font-family: var(--font); }
+    .btn {
+      background: linear-gradient(#7a4e2a, #583619);
+      border: 1px solid var(--bronze);
+      color: var(--paper);
+      border-radius: 4px;
+      padding: 4px 10px;
+      cursor: pointer;
+      font-size: 12px;
+      text-decoration: none;
+    }
+    .btn:hover { filter: brightness(1.2); }
+    .btn.sm { font-size: 11px; padding: 2px 6px; }
+
+    /* ========================================================= */
+    /* 1. TOPBAR VÕ LÂM CHÍNH TÔNG (Đầy đủ Cấp, Máu, Mana, Rank) */
+    /* ========================================================= */
+    #topbar {
+      position: absolute; left: 50%; transform: translateX(-50%);
+      width: min(980px, calc(100% - 16px)); top: 0;
+      border-radius: 0 0 8px 8px;
+      border-left: 1px solid #6a5534; border-right: 1px solid #6a5534; border-bottom: 1px solid #6a5534;
+      height: 22px; z-index: 5; display: flex; align-items: center; gap: 4px;
+      padding: 0 8px; box-sizing: border-box;
+      background: linear-gradient(#3a3226, #1c160f);
+      box-shadow: 0 2px 8px rgba(0,0,0,.6);
+      font-size: 11.5px; color: #e8dcc0; white-space: nowrap;
+    }
+    #topbar .tbl {
+      padding: 0 6px; border: 1px solid #5a4a30; border-radius: 3px;
+      background: #2a2219; height: 16px; line-height: 15px; font-size: 11px;
+    }
+    #topbar .tbl b { color: #8ef0a0; font-weight: 600; }
+    #tbClock { color: #cfc4a8; padding: 0 4px; font-size: 11px; }
+
+    .bar {
+      position: relative; height: 13px; background: #140c09;
+      border: 1px solid #000; border-radius: 3px; overflow: hidden;
+      flex: 1 1 0; min-width: 80px;
+    }
+    .bar i {
+      position: absolute; left: 0; top: 0; bottom: 0; width: 100%;
+      transition: width .25s ease-out;
+    }
+    .bar span {
+      position: absolute; inset: 0; font-size: 9.5px; line-height: 13px;
+      text-align: center; color: #fff; text-shadow: 0 1px 2px #000; font-weight: 600;
+    }
+    #hpbar i { background: linear-gradient(#e0604d, var(--cinnabar)); }
+    #mpbar i { background: linear-gradient(#6b9be0, var(--azure)); }
+    #stbar i { background: linear-gradient(#f0d060, #b08a20); }
+    #expbar i { background: linear-gradient(#e8c050, #a8801a); }
+
+    /* ========================================================= */
+    /* 2. MINIMAP & TRACKERS (Góc trên bên phải)                 */
+    /* ========================================================= */
+    #miniWrap {
+      position: absolute; right: 10px; top: 28px;
+      padding: 6px; text-align: center; z-index: 5;
+    }
+    #mini {
+      display: block; width: 168px; height: 92px;
+      border-radius: 4px; background: #0c0a08;
+    }
+    #zone { font-size: 13px; font-weight: 700; color: var(--bronze); margin-top: 4px; }
+    #bmBtn { font-size: 11px; padding: 2px 6px; margin-top: 2px; }
+    #btn2d {
+      display: inline-block; margin-left: 4px; text-decoration: none;
+      background: linear-gradient(180deg, #c8902a, #7a5212);
+      border-color: #ffe9a0; color: #fff; font-weight: 700;
+    }
+    #coordGo {
+      display: flex; align-items: center; gap: 3px; margin-top: 4px; justify-content: center;
+    }
+    #coordGo input {
+      width: 40px; padding: 2px 4px; font: 11px var(--font);
+      background: #1a100c; color: #f1e5c9; border: 1px solid #6a5534;
+      border-radius: 4px; text-align: center;
+    }
+    #coordGo span { color: #c9b89a; font-size: 11px; }
+
+    #gkTrack {
+      position: absolute; right: 10px; top: 180px; width: 210px;
+      padding: 6px 10px; text-align: left; font-size: 11.5px; line-height: 1.4; z-index: 4;
+    }
+    #gkTrack .gh { color: #ffd24a; font-weight: 700; cursor: pointer; }
+    #quest {
+      position: absolute; right: 10px; top: 228px; width: 210px;
+      padding: 8px 10px; font-size: 12px; line-height: 1.45; z-index: 4;
+    }
+    #quest b { color: var(--gold); font-weight: 600; display: block; margin-bottom: 3px; }
+
+    /* ========================================================= */
+    /* 3. TARGET FRAME KHUNG MỤC TIÊU (Trên đỉnh màn hình)        */
+    /* ========================================================= */
+    #tgtF {
+      position: absolute; left: 50%; transform: translateX(-50%);
+      top: 32px; width: 260px; z-index: 5; padding: 4px 10px 6px;
+      border: 1px solid #7a6238; border-radius: 9px;
+      background: rgba(28, 22, 15, .9); font-size: 12.5px; color: #f1e5c9;
+      pointer-events: none; box-shadow: 0 2px 10px rgba(0,0,0,.6);
+      display: none;
+    }
+    #tgtF.show { display: block; }
+    #tgtF .tn { display: flex; align-items: center; gap: 5px; white-space: nowrap; overflow: hidden; }
+    #tgtF .tn .nm { flex: 1; overflow: hidden; text-overflow: ellipsis; font-weight: 700; color: #ffd24a; }
+    #tgtF .el {
+      font-size: 9.5px; padding: 0 5px; border-radius: 7px;
+      border: 1px solid #ffd24a; color: #ffd24a;
+    }
+    #tgtF .tb {
+      position: relative; height: 11px; margin-top: 3px;
+      background: #1a0a08; border: 1px solid #000; border-radius: 2px; overflow: hidden;
+    }
+    #tgtF .tb i {
+      position: absolute; left: 0; top: 0; bottom: 0; width: 100%;
+      background: linear-gradient(#e8483a, #8a1a12); transition: width 0.2s;
+    }
+    #tgtF .tb span {
+      position: relative; display: block; text-align: center;
+      font-size: 8.5px; line-height: 11px; color: #fff; text-shadow: 0 0 2px #000; font-weight: 700;
+    }
+
+    /* ========================================================= */
+    /* 4. CHAT BOX GÓC DƯỚI BÊN TRÁI (Thế giới, Mật, Thành thị)  */
+    /* ========================================================= */
+    #chat {
+      position: absolute; left: 10px; bottom: 98px;
+      width: min(390px, calc(100% - 20px)); z-index: 4;
+      display: flex; flex-direction: column; font-size: 12px;
+    }
+    #chatTabs { display: flex; gap: 3px; align-items: flex-end; }
+    #chatTabs button {
+      padding: 3px 8px; font-size: 11px; border: 1px solid var(--bronze-dim);
+      border-bottom: 0; border-radius: 5px 5px 0 0;
+      background: rgba(32, 20, 14, .85); color: var(--paper-dim);
+      cursor: pointer;
+    }
+    #chatTabs button.on {
+      background: linear-gradient(#5a3820, #3a2214);
+      color: var(--gold); border-color: var(--bronze); font-weight: 700;
+    }
+    #chatLog {
+      height: 96px; overflow-y: auto; padding: 6px 8px;
+      background: rgba(14, 9, 6, .78); border: 1px solid var(--bronze-dim);
+      border-radius: 0 4px 0 0; line-height: 1.45; text-shadow: 0 1px 2px #000;
+    }
+    #chatLog div { margin: 2px 0; }
+    #chatIn {
+      display: flex; gap: 3px; margin-top: 3px; align-items: center;
+    }
+    #chatCh {
+      padding: 3px 8px; border: 1px solid var(--bronze);
+      background: #3a2216; color: var(--gold); font-size: 11px;
+      border-radius: 3px; font-weight: 700; cursor: pointer;
+    }
+    #chatText {
+      flex: 1; padding: 4px 8px; font-size: 12px; font-family: var(--font);
+      background: rgba(18, 12, 8, .9); color: var(--paper);
+      border: 1px solid var(--bronze-dim); border-radius: 3px;
+    }
+    #chatText:focus { outline: 1px solid var(--gold); }
+    #chatEmo, #chatSend {
+      padding: 3px 7px; background: #3a2216; border: 1px solid var(--bronze);
+      color: var(--paper); border-radius: 3px; cursor: pointer; font-size: 12px;
+    }
+
+    /* Combat Floating Log */
+    #log {
+      position: absolute; left: 10px; bottom: 228px;
+      width: min(340px, 60vw); font-size: 12px; line-height: 1.45; pointer-events: none;
+      text-shadow: 0 1px 2px #000, 0 0 4px #000; z-index: 4;
+    }
+
+    /* ========================================================= */
+    /* 5. CÁC NÚT HOẠT ĐỘNG PHÍA TRÊN THANH PHÍM TẮT (#acts)      */
+    /* ========================================================= */
+    #acts {
+      position: absolute; right: calc(50% - 470px); bottom: 84px;
+      display: flex; gap: 6px; z-index: 4;
+    }
+    @media (max-width: 1000px) {
+      #acts { right: 10px; bottom: 80px; }
+    }
+    .actw {
+      display: flex; flex-direction: column; align-items: center;
+      width: 52px; gap: 2px;
+    }
+    .act {
+      width: 38px; height: 38px; border-radius: 50%;
+      border: 1.5px solid var(--bronze); padding: 0;
+      background: radial-gradient(circle at 40% 30%, #5a3a24, #1a100a 75%);
+      box-shadow: 0 2px 6px rgba(0,0,0,.6);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; color: #fff; font-size: 17px;
+      transition: transform 0.1s, border-color 0.15s;
+    }
+    .act:hover { border-color: var(--gold); transform: scale(1.08); }
+    .act:active { transform: scale(0.96); }
+    .actw .al {
+      font-size: 9px; color: var(--paper-dim); text-align: center;
+      white-space: nowrap; text-shadow: 0 1px 2px #000;
+    }
+
+    /* ========================================================= */
+    /* 6. THANH PHÍM TẮT & MENU CHÍNH DƯỚI MÀN HÌNH (#bar)        */
+    /* ========================================================= */
+    #bar {
+      position: absolute; left: 50%; bottom: 10px;
+      transform: translateX(-50%); display: flex; gap: 10px;
+      padding: 6px 12px; align-items: flex-end; z-index: 5;
+    }
+    .slot {
+      position: relative; width: 46px; height: 46px;
+      border: 1.5px solid var(--bronze-dim); border-radius: 5px;
+      background: #1a100c; color: var(--paper);
+      cursor: pointer; padding: 0; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color .15s;
+    }
+    .slot:hover { border-color: var(--gold); }
+    .slot canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .slot .k {
+      position: absolute; left: 3px; top: 1px;
+      font-size: 10.5px; font-weight: 700; color: var(--gold);
+      text-shadow: 0 1px 2px #000; z-index: 2;
+    }
+    .slot .n {
+      position: absolute; right: 3px; bottom: 1px;
+      font-size: 10.5px; font-weight: 700; text-shadow: 0 1px 2px #000;
+      color: #fff; z-index: 2;
+    }
+    .potk { display: flex; gap: 4px; }
+    .keyslots { display: flex; gap: 4px; }
+    .slot.mouse { width: 50px; height: 50px; }
+    .slot.mouse .lbl {
+      position: absolute; inset: auto 0 2px 0;
+      font-size: 9.5px; text-align: center; color: #ffe08a;
+      text-shadow: 0 1px 2px #000; font-weight: 600;
+    }
+    .slot.skill {
+      width: 48px; height: 48px;
+      background: radial-gradient(circle at 45% 35%, #422616, #140c08 80%);
+      border-color: #8a6234;
+    }
+    .slot.skill .lbl {
+      position: absolute; inset: auto 0 2px 0;
+      font-size: 8.5px; text-align: center; color: var(--gold);
+      background: rgba(0,0,0,0.7); padding: 1px 0; z-index: 2;
+    }
+    .menuk {
+      display: flex; gap: 3px; padding-left: 8px;
+      border-left: 1px solid var(--bronze-dim);
+    }
+    .slot.small {
+      width: 42px; height: 48px; display: flex;
+      flex-direction: column; align-items: center; justify-content: flex-start;
+      padding-top: 4px;
+    }
+    .slot.small .mi { font-size: 17px; line-height: 1.1; }
+    .slot.small .lbl {
+      font-size: 9px; text-align: center; color: var(--paper);
+      margin-top: 2px; line-height: 1; text-shadow: 0 1px 2px #000;
+    }
+
+    /* Nút Hướng Dẫn Nhỏ Gọn Góc Trên */
+    #btnGuide {
+      position: absolute; top: 34px; left: 14px; z-index: 5;
+      font-size: 11.5px; padding: 4px 10px; display: flex; align-items: center; gap: 5px;
+      background: linear-gradient(180deg, #3a2216, #160e0a);
+      border: 1.5px solid #d4a024; border-radius: 6px; color: #ffd24a;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.6); cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    #btnGuide:hover {
+      background: linear-gradient(180deg, #543220, #26160e);
+      border-color: #ffe066; color: #fff; transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(255, 210, 74, 0.4);
+    }
+    .kbd {
+      background: #3a2216; border: 1px solid var(--gold);
+      color: var(--gold); padding: 0 4px; border-radius: 3px; font-size: 10px;
+    }
+
+    /* Hiệu ứng trỏ chuột click */
+    #clickRing {
+      position: absolute; width: 34px; height: 34px;
+      border: 2px solid #ffd24a; border-radius: 50%;
+      pointer-events: none; transform: translate(-50%, -50%) scale(0);
+      opacity: 0; transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+      box-shadow: 0 0 12px rgba(255, 210, 74, 0.8); z-index: 10;
+    }
+    #clickRing.active {
+      transform: translate(-50%, -50%) scale(1.4);
+      opacity: 1;
+    }
+
+    /* Các nút lựa chọn trong Bảng Đối Thoại NPC */
+    .npc-opt-btn {
+      display: flex; align-items: center; justify-content: flex-start; gap: 8px;
+      padding: 8px 12px; font-size: 13px; font-family: 'Noto Serif', serif;
+      background: linear-gradient(180deg, #2c1c14, #180e0a);
+      border: 1.5px solid #6a4e2e; border-radius: 6px;
+      color: #f5ecd8; cursor: pointer; text-align: left;
+      transition: all 0.15s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+    }
+    .npc-opt-btn:hover {
+      background: linear-gradient(180deg, #442a1a, #24140c);
+      border-color: #ffd24a; color: #ffd24a; transform: translateX(3px);
+      box-shadow: 0 3px 8px rgba(255, 210, 74, 0.25);
+    }
+    .npc-opt-btn.primary {
+      background: linear-gradient(180deg, #7a2818, #3e1208);
+      border-color: #d44a30; color: #ffe8d6; font-weight: 700;
+    }
+    .npc-opt-btn.primary:hover {
+      background: linear-gradient(180deg, #963420, #54180c);
+      border-color: #ffd24a; color: #ffd24a;
+    }
+    .npc-opt-btn.reward {
+      background: linear-gradient(180deg, #1f5e32, #0d3219);
+      border-color: #3bb25d; color: #e8ffe8; font-weight: 700;
+      animation: pulseGlow 1.5s infinite alternate;
+    }
+    .npc-opt-btn.reward:hover {
+      background: linear-gradient(180deg, #2b7d44, #124522);
+      border-color: #ffd24a; color: #ffd24a;
+    }
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 5px rgba(59, 178, 93, 0.4); }
+      100% { box-shadow: 0 0 16px rgba(255, 210, 74, 0.7); }
+    }
+
+    /* ========================================================= */
+    /* HỆ THỐNG MODAL WUXIA ĐẲNG CẤP: CANH GIỮA 100%, KHÔNG TRÀN */
+    /* ========================================================= */
+    .wuxia-modal {
+      position: fixed; left: 50%; top: 48%;
+      transform: translate(-50%, -50%);
+      z-index: 1200; display: none; flex-direction: column !important;
+      box-sizing: border-box;
+      background: radial-gradient(circle at 50% 25%, #2a1a12, #120b08 92%);
+      border: 2px solid #a87e45; border-radius: 10px;
+      box-shadow: 0 16px 60px rgba(0,0,0,0.96), 0 0 24px rgba(168,126,69,0.35);
+      color: var(--paper); max-height: 82vh; overflow: hidden;
+    }
+    .wuxia-modal-hdr {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 10px 14px; background: linear-gradient(180deg, #442817, #24140c);
+      border-bottom: 1.5px solid #6b4d29; flex-shrink: 0;
+    }
+    .wuxia-modal-hdr h2 {
+      margin: 0; font-size: 16px; color: var(--gold);
+      display: flex; align-items: center; gap: 8px; font-weight: 700;
+      text-shadow: 0 1px 3px #000;
+    }
+    .wuxia-modal-close {
+      background: none; border: none; color: #ffd24a; font-size: 22px;
+      cursor: pointer; line-height: 1; padding: 0 6px;
+      transition: transform 0.15s, color 0.15s;
+    }
+    .wuxia-modal-close:hover { color: #fff; transform: scale(1.15); }
+    .wuxia-modal-body {
+      flex: 1 1 auto; overflow-y: auto; padding: 14px;
+    }
+    .wuxia-modal-ftr {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 8px 14px; background: #160e0a;
+      border-top: 1px solid #4a3420; flex-shrink: 0; font-size: 11.5px;
+    }
+
+    /* Hiệu ứng kéo thả ô phím tắt */
+    .slot[draggable="true"] { cursor: grab; }
+    .slot[draggable="true"]:active { cursor: grabbing; }
+    .slot.drophover {
+      border-color: #ffd24a !important;
+      box-shadow: 0 0 12px #ffd24a !important;
+      transform: scale(1.06);
+    }
+    .slot .pot-ico, .slot .sk-ico {
+      font-size: 20px; z-index: 1; pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Canvas WebGL 3D -->
+  <div id="canvas3d"></div>
+  <div id="clickRing"></div>
+
+  <!-- 1. TOPBAR VÕ LÂM -->
+  <div id="topbar">
+    <span id="tbClock">13-10-22:05</span>
+    <span class="tbl" id="tbWeather" onclick="toggleWeather3D()" style="cursor:pointer; color:#ffd24a;" title="Thời tiết & Ngày/Đêm theo giờ thực tế. Bấm để chuyển đổi nhanh!">🌙 Đêm · Nắng</span>
+    <span class="tbl" id="tbFaction" onclick="openFactionModal()" style="cursor:pointer; background:linear-gradient(180deg,#4a321a,#22140a); border:1px solid #ffd24a; color:#ffd24a; font-weight:700; padding:0 8px;" title="Bấm để đổi môn phái và bộ võ công!">☯️ Võ Đang</span>
+    <span class="tbl">Cấp <b id="tbLv">200</b></span>
+    <div class="bar" id="hpbar" title="Sinh lực"><i style="width: 100%;"></i><span id="hpText">1397 / 1397</span></div>
+    <div class="bar" id="mpbar" title="Nội lực"><i style="width: 100%;"></i><span id="mpText">987 / 987</span></div>
+    <div class="bar" id="stbar" title="Thể lực"><i style="width: 100%;"></i><span>1205 / 1205</span></div>
+    <div class="bar" id="expbar" title="Kinh nghiệm"><i style="width: 15%;"></i><span>0.00%</span></div>
+    <span class="tbl">Hạng <b id="tbRank">1</b></span>
+  </div>
+
+  <!-- 2. NÚT HƯỚNG DẪN GÓC TRÊN BÊN TRÁI -->
+  <button id="btnGuide" onclick="openHelpGuideModal()" title="Xem toàn bộ hướng dẫn thao tác, kỹ năng, nhiệm vụ và dịch trạm (phím H)">
+    <span>📖</span> <b>Hướng Dẫn</b>
+  </button>
+
+  <!-- 3. KHUNG MỤC TIÊU (TARGET FRAME) -->
+  <div id="tgtF">
+    <div class="tn">
+      <span class="nm" id="tgtNm">Mục tiêu</span>
+      <span class="el" id="tgtEl">Kim</span>
+    </div>
+    <div class="tb">
+      <i id="tgtHpFill" style="width: 100%;"></i>
+      <span id="tgtHpTxt">100%</span>
+    </div>
+  </div>
+
+  <!-- 4. MINIMAP & TRACKERS -->
+  <div id="miniWrap" class="plate">
+    <canvas id="mini" width="168" height="92"></canvas>
+    <div id="zone">Bích Thủy Thôn - 94/97</div>
+    <div style="display:flex; justify-content:center; gap:4px; margin-top:2px;">
+      <button id="bmBtn" class="btn sm" onclick="openMapModal()">🗺 Bản đồ</button>
+      <a id="btn2d" href="index.html" class="btn sm" title="Trở về bản 2.5D cổ điển">🎮 Về Bản 2.5D</a>
+    </div>
+    <div id="coordGo">
+      <input id="cgX" type="number" placeholder="X" value="94">
+      <span>/</span>
+      <input id="cgY" type="number" placeholder="Y" value="97">
+      <button class="btn sm" onclick="heroGoToCoord()">Đi</button>
+    </div>
+  </div>
+
+  <div id="gkTrack" class="plate">
+    <div class="gh">⚔ Boss Hoàng Kim 2/5 - Tiêu 1/10</div>
+  </div>
+
+  <div id="quest" class="plate">
+    <b>📜 Nhiệm vụ - Hướng dẫn (2)</b>
+    <div style="color:var(--paper-dim);">Trừ diệt bầy Sói Xám và Heo Rừng hung hãn quanh Trấn Liễu Khê...</div>
+  </div>
+
+  <!-- 5. CHAT & COMBAT LOG -->
+  <div id="log"></div>
+  <div id="chat">
+    <div id="chatTabs">
+      <button class="on" onclick="setChatTab('all')">Thế giới</button>
+      <button onclick="setChatTab('mat')">Mật</button>
+      <button onclick="setChatTab('town')">Thành Thị</button>
+      <button onclick="setChatTab('guild')">Bang hội</button>
+      <button onclick="setChatTab('near')">Xung quanh</button>
+    </div>
+    <div id="chatLog">
+      <div style="color:#ffd24a;">[Hệ thống] Chào mừng hiệp khách trở lại Võ Lâm Chibi 3D!</div>
+      <div style="color:#8ef0a0;">[Khác] Bản 3D hỗ trợ đè chuột phải xoay 360°, quái vật và hiệp khách chuẩn phong cách Chibi VLTK.</div>
+    </div>
+    <div id="chatIn">
+      <button id="chatCh" type="button">Thành Thị</button>
+      <input id="chatText" placeholder="Enter để trò chuyện" onkeydown="handleChatKey(event)">
+      <button id="chatEmo" type="button">😊</button>
+      <button id="chatSend" type="button" onclick="sendChatMsg()">➤</button>
+    </div>
+  </div>
+
+  <!-- 6. CÁC NÚT HOẠT ĐỘNG (#acts) -->
+  <div id="acts">
+    <div class="actw">
+      <button class="act" id="aKtc" onclick="toast3D('Vạn Bảo Lâu mở tại Thôn Trấn!')" style="color:#ffd24a;">💎</button>
+      <span class="al">Vạn Bảo Lâu</span>
+    </div>
+    <div class="actw">
+      <button class="act" id="aPk" onclick="togglePk3D()" style="color:#8ef0a0;">Hòa</button>
+      <span class="al" id="pkLbl">Hòa bình</span>
+    </div>
+    <div class="actw">
+      <button class="act" id="aRide" onclick="toggleRide3D()">🐎</button>
+      <span class="al">Ngựa</span>
+    </div>
+    <div class="actw">
+      <button class="act" id="aSit" onclick="toggleSit3D()">🧘</button>
+      <span class="al">Ngồi thiền</span>
+    </div>
+    <div class="actw">
+      <button class="act" id="aJump" onclick="khinhCong3D()">🕊️</button>
+      <span class="al">Khinh công</span>
+    </div>
+  </div>
+
+  <!-- 7. THANH HOTBAR & MENU CHÍNH (#bar) -->
+  <div id="bar" class="plate">
+    <!-- 6 Ô Thuốc & Vật Phẩm (1 - 6) - Kéo Thả & Click Phải Để Gỡ -->
+    <div class="potk">
+      <div class="slot" id="slot_pot_1" title="Bình Sinh Lực [1] (Bấm dùng · Kéo thả · Click phải gỡ)">
+        <span class="pot-ico">🧪</span>
+        <span class="k">1</span><span class="n" id="p1Num">17</span><span class="lbl">Huyết</span>
+      </div>
+      <div class="slot" id="slot_pot_2" title="Bình Nội Lực [2] (Bấm dùng · Kéo thả · Click phải gỡ)">
+        <span class="pot-ico">🧪</span>
+        <span class="k">2</span><span class="n" id="p2Num">11</span><span class="lbl">Khí</span>
+      </div>
+      <div class="slot" id="slot_pot_3" title="Cửu Chuyển Hoàn Hồn Đan [3] (Bấm dùng · Kéo thả · Click phải gỡ)">
+        <span class="pot-ico">🏺</span>
+        <span class="k">3</span><span class="n" id="p3Num">3</span><span class="lbl">Cửu Chuyển</span>
+      </div>
+      <div class="slot" id="slot_pot_4" title="Giải Độc Dược [4] (Bấm dùng · Kéo thả · Click phải gỡ)">
+        <span class="pot-ico">🌿</span>
+        <span class="k">4</span><span class="n" id="p4Num">5</span><span class="lbl">Giải Độc</span>
+      </div>
+      <div class="slot" id="slot_pot_5" title="Ô Phím Tắt [5] Trống (Kéo thả từ Túi Đồ)">
+        <span class="pot-ico"></span>
+        <span class="k">5</span><span class="n">0</span><span class="lbl"></span>
+      </div>
+      <div class="slot" id="slot_pot_6" title="Ô Phím Tắt [6] Trống (Kéo thả từ Túi Đồ)">
+        <span class="pot-ico"></span>
+        <span class="k">6</span><span class="n">0</span><span class="lbl"></span>
+      </div>
+    </div>
+
+    <!-- 4 Ô Kỹ Năng Phím Tắt Q, W, E, R - Click Chuột Để Chọn Skill · Click Phải Để Gỡ -->
+    <div class="skills-bar" style="display:flex; gap:4px;">
+      <div class="slot skill" id="slot_sk_Q" title="Chiêu [Q / F1]: Click chọn skill · Kéo thả · Click phải gỡ">
+        <span class="sk-ico">⚡</span>
+        <span class="k">Q</span><span class="lbl">Chiêu 1</span>
+      </div>
+      <div class="slot skill" id="slot_sk_W" title="Chiêu [W / F2]: Click chọn skill · Kéo thả · Click phải gỡ">
+        <span class="sk-ico">🗡️</span>
+        <span class="k">W</span><span class="lbl">Chiêu 2</span>
+      </div>
+      <div class="slot skill" id="slot_sk_E" title="Chiêu [E / F3]: Click chọn skill · Kéo thả · Click phải gỡ">
+        <span class="sk-ico">✨</span>
+        <span class="k">E</span><span class="lbl">Chiêu 3</span>
+      </div>
+      <div class="slot skill" id="slot_sk_R" title="Chiêu [R / F4]: Click chọn skill · Kéo thả · Click phải gỡ">
+        <span class="sk-ico">👑</span>
+        <span class="k">R</span><span class="lbl">Chiêu 4</span>
+      </div>
+    </div>
+
+    <!-- 2 Ô Chiêu Chuột Trái & Phải - Click Chuột Để Chọn Skill · Click Phải Để Gỡ -->
+    <div class="keyslots">
+      <div class="slot mouse" id="slot_sk_left" title="Chiêu Chuột Trái: Click chọn skill · Click phải gỡ">
+        <span class="sk-ico">⚡</span>
+        <span class="k">Trái</span><span class="lbl">Võ Công</span>
+      </div>
+      <div class="slot mouse" id="slot_sk_right" title="Chiêu Chuột Phải: Click chọn skill · Click phải gỡ">
+        <span class="sk-ico">❄️</span>
+        <span class="k">Phải</span><span class="lbl">Tuyệt Kỹ</span>
+      </div>
+    </div>
+
+    <!-- Các Nút Menu Võ Lâm Port Chuẩn Bản 2.5D -->
+    <div class="menuk" id="menuBar">
+      <div class="slot small" onclick="toggleCharModal()" title="Bảng Thuộc Tính & Trang Bị (Phím C)">
+        <span class="mi">👤</span><span class="lbl">Nhân vật</span>
+      </div>
+      <div class="slot small" onclick="toggleBagModal()" title="Hành Trang & Rương Đồ (Phím I)">
+        <span class="mi">🎒</span><span class="lbl">Túi đồ</span>
+      </div>
+      <div class="slot small" onclick="toggleSkillModal()" title="Võ Công Bí Kíp & Môn Phái (Phím K)">
+        <span class="mi">📖</span><span class="lbl">Kỹ năng</span>
+      </div>
+      <div class="slot small" onclick="toggleGuildModal()" title="Bảng Bang Hội & Quân Công (Phím H)">
+        <span class="mi">🚩</span><span class="lbl">Bang</span>
+      </div>
+      <div class="slot small" id="btnRunToggle" onclick="toggleRun3D()" title="Bật/Tắt Chạy Bộ Nhanh">
+        <span class="mi">🏃</span><span class="lbl">Chạy</span>
+      </div>
+      <div class="slot small" onclick="toggleAutoFight()" title="Tự Động Đánh Quái (Phím A)">
+        <span class="mi" id="autoMi">⚙</span><span class="lbl" id="autoLbl">Tự động</span>
+      </div>
+      <div class="slot small" onclick="toggleAutoModal()" title="Cài Đặt Auto Đánh & Bơm Máu (Phím O)">
+        <span class="mi">🔧</span><span class="lbl">Cài auto</span>
+      </div>
+      <div class="slot small" onclick="toggleMailModal()" title="Hòm Thư Giang Hồ & Nhận Quà (Phím L)">
+        <span class="mi">✉</span><span class="lbl">Thư</span>
+      </div>
+      <div class="slot small" onclick="toggleSettingsModal()" title="Cài Đặt Hệ Thống (Phím Esc)">
+        <span class="mi">🛠</span><span class="lbl">Cài đặt</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HIỆU ỨNG CHUYỂN MAP GIANG HỒ (TRANSITION OVERLAY) -->
+  <div id="mapTransitionOverlay" style="position:fixed; inset:0; background:rgba(12,8,6,0.95); z-index:9999; display:none; opacity:0; transition:opacity 0.35s ease; flex-direction:column; align-items:center; justify-content:center; color:#ffd24a; font-family:'Noto Serif',serif; pointer-events:none;">
+    <div style="font-size:32px; margin-bottom:10px; text-shadow:0 0 18px rgba(255,210,74,0.7); animation:bounce 1s infinite alternate;">🐎</div>
+    <div id="transitionMapTitle" style="font-size:24px; font-weight:700; color:#ffd24a; letter-spacing:1.5px; text-shadow:0 2px 8px rgba(0,0,0,0.8);">Đang di chuyển...</div>
+    <div id="transitionMapSub" style="font-size:13px; color:#c9b89a; margin-top:8px;">Ngựa trạm vượt gió ngàn bôn tẩu cõi giang hồ...</div>
+  </div>
+
+  <!-- BACKDROP NỀN TỐI KHI MỞ BẢNG (MODAL BACKDROP) -->
+  <div id="modalBackdrop" style="position:fixed; inset:0; background:rgba(0,0,0,0.65); backdrop-filter:blur(3px); z-index:1100; display:none;" onclick="closeAllModals3D()"></div>
+
+  <!-- MENU CHỌN SKILL NHANH KHI CLICK VÀO Ô PHÍM TẮT SKILL (POPOVER) -->
+  <div id="skillSelectorPopup" class="wuxia-modal plate" style="position:fixed; left:50%; bottom:76px; top:auto; transform:translateX(-50%); width:330px; max-height:360px; z-index:1600; display:none; flex-direction:column; padding:0; box-shadow:0 10px 40px rgba(0,0,0,0.95); border:2px solid #ffd24a;">
+    <div class="wuxia-modal-hdr" style="padding:8px 12px;">
+      <h2 id="skPopupTitle" style="font-size:13.5px; margin:0; color:#ffd24a;">Chọn Chiêu Thức</h2>
+      <button onclick="closeSkillSelectorPopup()" class="wuxia-modal-close" style="font-size:18px;">×</button>
+    </div>
+    <div id="skPopupList" style="flex:1; overflow-y:auto; padding:8px; display:flex; flex-direction:column; gap:6px;"></div>
+    <div class="wuxia-modal-ftr" style="padding:6px 10px;">
+      <button class="btn sm" onclick="unassignCurrentSkillSlot()" style="background:#5a1e16; border-color:#d44a3a; color:#ffb0a0;">❌ Gỡ bỏ phím này</button>
+      <button class="btn sm" onclick="closeSkillSelectorPopup()">Đóng</button>
+    </div>
+  </div>
+
+  <!-- BẢNG NHÂN VẬT (CHARACTER MODAL - PHÍM C) -->
+  <div id="charModal" class="wuxia-modal plate" style="width:min(660px, 95vw);">
+    <div class="wuxia-modal-hdr">
+      <h2><span>👤</span> Bảng Thuộc Tính & Trang Bị Hiệp Khách (Phím C)</h2>
+      <button onclick="closeModal3D('charModal')" class="wuxia-modal-close">×</button>
+    </div>
+    <div style="display:flex; gap:6px; padding:8px 14px 0; border-bottom:1px solid #4a3420;">
+      <button class="btn sm" id="cTabAttr" onclick="switchCharTab('attr')" style="flex:1; font-weight:700;">📊 Thuộc Tính & Tiềm Năng</button>
+      <button class="btn sm" id="cTabEq" onclick="switchCharTab('eq')" style="flex:1;">🛡️ Trang Bị Đang Mặc</button>
+    </div>
+    <div class="wuxia-modal-body" id="charModalBody"></div>
+    <div class="wuxia-modal-ftr">
+      <span style="color:#bfae8c;">💡 Mẹo: Nhấn phím <b>C</b> để mở hoặc đóng nhanh bảng nhân vật.</span>
+      <button class="btn sm" onclick="closeModal3D('charModal')">Đóng (Esc)</button>
+    </div>
+  </div>
+
+  <!-- BẢNG HÀNH TRANG / TÚI ĐỒ (INVENTORY MODAL - PHÍM I) -->
+  <div id="bagModal" class="wuxia-modal plate" style="width:min(580px, 96vw);">
+    <div class="wuxia-modal-hdr">
+      <h2><span>🎒</span> Hành Trang · Túi Đồ Giang Hồ (Phím I)</h2>
+      <button onclick="closeModal3D('bagModal')" class="wuxia-modal-close">×</button>
+    </div>
+    <div class="wuxia-modal-body" style="padding:12px 14px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; font-size:12px; background:rgba(20,13,8,0.7); padding:6px 10px; border-radius:6px; border:1px solid #4a3420;">
+        <div>🪙 Ngân lượng: <b id="bagMoneyTxt" style="color:#ffd24a;">98,500 Lượng</b></div>
+        <div>💎 Bảo vật: <b id="bagKnbTxt" style="color:#7ec8ff;">250 KNB</b></div>
+      </div>
+      <div id="bagGridContainer" style="display:grid; grid-template-columns:repeat(8, 1fr); gap:6px; justify-items:center; background:#120b07; border:1px solid #3e2816; border-radius:6px; padding:8px; min-height:220px;"></div>
+      <div id="bagItemDetailBox" style="margin-top:10px; background:rgba(20,13,8,0.7); border:1px solid #4a3420; border-radius:6px; padding:8px 10px; min-height:60px;"></div>
+    </div>
+    <div class="wuxia-modal-ftr">
+      <div style="display:flex; gap:6px;">
+        <button class="btn sm" onclick="sortBagItems()">🔄 Sắp Xếp</button>
+        <button class="btn sm" onclick="gatherBagItems()">📦 Gom Lại</button>
+      </div>
+      <button class="btn sm" onclick="closeModal3D('bagModal')">Đóng (Esc)</button>
+    </div>
+  </div>
+
+  <!-- BẢNG KỸ NĂNG MÔN PHÁI (SKILL MODAL - PHÍM K) -->
+  <div id="skillModal" class="wuxia-modal plate" style="width:min(720px, 96vw);">
+    <div class="wuxia-modal-hdr">
+      <h2><span>📖</span> Võ Công Bí Kíp · Thập Đại Môn Phái (Phím K)</h2>
+      <button onclick="closeModal3D('skillModal')" class="wuxia-modal-close">×</button>
+    </div>
+    <div class="wuxia-modal-body" id="skillModalBody"></div>
+    <div class="wuxia-modal-ftr">
+      <span style="color:#bfae8c;">💡 Kéo thẻ kỹ năng vào [Q, W, E, R, Trái, Phải] hoặc click ô hotbar để gán.</span>
+      <button class="btn sm" onclick="closeModal3D('skillModal')">Đóng (Esc)</button>
+    </div>
+  </div>
+
+  <!-- BẢNG BANG HỘI (GUILD MODAL - PHÍM H) -->
+  <div id="guildModal" class="wuxia-modal plate" style="width:min(540px, 95vw);">
+    <div class="wuxia-modal-hdr">
+      <h2><span>🚩</span> Bang Hội · Võ Lâm Minh Bang (Phím H)</h2>
+      <button onclick="closeModal3D('guildModal')" class="wuxia-modal-close">×</button>
+    </div>
+    <div class="wuxia-modal-body" style="font-size:12.5px; line-height:1.7;">
+      <div style="background:rgba(20,13,8,0.7); border:1px solid #4a3420; border-radius:8px; padding:12px; margin-bottom:10px;">
+        <div style="font-size:16px; font-weight:700; color:#ffd24a; margin-bottom:4px;">🚩 Bang Hội: Võ Lâm Hào Kiệt [Cấp 5]</div>
+        <div>👑 Bang Chủ: <b style="color:#8ef0a0;">Hiệp Khách [GM]</b></div>
+        <div>👥 Thành viên: <b style="color:#ffd24a;">48 / 50</b></div>
+        <div>🏰 Lãnh địa chiếm đóng: <b style="color:#7ec8ff;">Ba Lăng Huyện, Biện Kinh Kinh Đô</b></div>
+        <div>💰 Quỹ tài phú bang: <b style="color:#ffd24a;">1,850,000 Lượng</b></div>
+      </div>
+      <div style="background:rgba(20,13,8,0.7); border:1px solid #4a3420; border-radius:8px; padding:12px;">
+        <b style="color:#ffd24a;">Kỹ Năng Bang Hội:</b>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-top:6px;">
+          <div>✨ Khí Huyết Bang: <b style="color:#8ef0a0;">+1,500 HP</b></div>
+          <div>⚡ Ngoại Công Bang: <b style="color:#ffd24a;">+250 Công kích</b></div>
+          <div>🛡️ Kim Thân Bang: <b style="color:#8ef0a0;">+180 Phòng thủ</b></div>
+          <div>💎 May Mắn Bang: <b style="color:#7ec8ff;">+15% May mắn</b></div>
+        </div>
+      </div>
+    </div>
+    <div class="wuxia-modal-ftr">
+      <span style="color:#bfae8c;">Chiến sự công thành diễn ra vào 20h00 tối thứ Bảy.</span>
+      <button class="btn sm" onclick="closeModal3D('guildModal')">Đóng (Esc)</button>
+    </div>
+  </div>
+
+  <!-- BẢNG CÀI ĐẶT AUTO (AUTO MODAL - PHÍM O) -->
+  <div id="autoModal" class="wuxia-modal plate" style="width:min(500px, 95vw);">
+    <div class="wuxia-modal-hdr">
+      <h2><span>⚙️</span> Cài Đặt Tự Động Đánh Quái (Phím O)</h2>
+      <button onclick="closeModal3D('autoModal')" class="wuxia-modal-close">×</button>
+    </div>
+    <div class="wuxia-modal-body" style="font-size:12.5px; line-height:1.8;">
+      <div style="background:rgba(20,13,8,0.7); border:1px solid #4a3420; border-radius:8px; padding:12px; margin-bottom:10px;">
+        <b style="color:#ffd24a; font-size:13.5px; display:block; margin-bottom:6px;">🧪 Tự Động Dược Phẩm:</b>
+        <label style="display:flex; align-items:center; gap:8px; margin:4px 0; cursor:pointer;">
+          <input type="checkbox" checked> Tự uống Bình Sinh Lực khi HP dưới: <b>70%</b>
+        </label>
+        <label style="display:flex; align-items:center; gap:8px; margin:4px 0; cursor:pointer;">
+          <input type="checkbox" checked> Tự uống Bình Nội Lực khi MP dưới: <b>50%</b>
+        </label>
+        <label style="display:flex; align-items:center; gap:8px; margin:4px 0; cursor:pointer;">
+          <input type="checkbox" checked> Tự dùng Hoắc Hương Giải Độc Đan khi trúng độc
+        </label>
+      </div>
+      <div style="background:rgba(20,13,8,0.7); border:1px solid #4a3420; border-radius:8px; padding:12px;">
+        <b style="color:#ffd24a; font-size:13.5px; display:block; margin-bottom:6px;">⚔️ Chiến Đấu & Nhặt Đồ:</b>
+        <label style="display:flex; align-items:center; gap:8px; margin:4px 0; cursor:pointer;">
+          <input type="checkbox" checked> Bán kính tìm quái xung quanh: <b>28 mét</b>
+        </label>
+        <label style="display:flex; align-items:center; gap:8px; margin:4px 0; cursor:pointer;">
+          <input type="checkbox" checked> Tự động nhặt Trang bị Hoàng Kim & Huyền Tinh
+        </label>
+        <label style="display:flex; align-items:center; gap:8px; margin:4px 0; cursor:pointer;">
+          <input type="checkbox" checked> Tự động quay lại điểm luyện công khi hồi sinh
+        </label>
+      </div>
+    </div>
+    <div class="wuxia-modal-ftr">
+      <button class="btn sm" onclick="window.toast3D('💾 Đã lưu cấu hình Auto đánh quái thành công!'); closeModal3D('autoModal');" style="background:linear-gradient(180deg,#2b7d44,#124522); border-color:#3bb25d;">💾 Lưu Cài Đặt</button>
+      <button class="btn sm" onclick="closeModal3D('autoModal')">Đóng (Esc)</button>
+    </div>
+  </div>
+
+  <!-- BẢNG HỘP THƯ (MAIL MODAL - PHÍM L) -->
+  <div id="mailModal" class="wuxia-modal plate" style="width:min(520px, 95vw);">
+    <div class="wuxia-modal-hdr">
+      <h2><span>✉️</span> Hộp Thư Giang Hồ · Bồ Câu Đưa Thư (Phím L)</h2>
+      <button onclick="closeModal3D('mailModal')" class="wuxia-modal-close">×</button>
+    </div>
+    <div class="wuxia-modal-body" style="font-size:12.5px; line-height:1.6;">
+      <div style="background:rgba(30,19,12,0.85); border:1.5px solid #d4a024; border-radius:8px; padding:12px; margin-bottom:10px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+          <b style="color:#ffd24a; font-size:13.5px;">📜 [Quà Hệ Thống] Chào Mừng Thiếu Hiệp Bôn Tẩu</b>
+          <span style="font-size:10.5px; color:#8ef0a0;">Mới nhận</span>
+        </div>
+        <div style="color:#c9b89a; font-size:11.5px; margin-bottom:8px;">Hệ thống tặng thiếu hiệp 50,000 lượng và 10 Tu Luyện Đan để bôn tẩu giang hồ thuận lợi!</div>
+        <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px dashed #5a4228; padding-top:6px;">
+          <span style="color:#ffd24a;">🎁 Đính kèm: 50,000 Lượng · 10 Tu Luyện Đan</span>
+          <button id="btnClaimMail" class="btn sm" onclick="claimAllMailReward()" style="background:linear-gradient(180deg,#2b7d44,#124522); border-color:#3bb25d;">Nhận Quà</button>
+        </div>
+      </div>
+    </div>
+    <div class="wuxia-modal-ftr">
+      <span style="color:#bfae8c;">Thư từ tự động xóa sau 30 ngày.</span>
+      <button class="btn sm" onclick="closeModal3D('mailModal')">Đóng (Esc)</button>
+    </div>
+  </div>
+
+  <!-- BẢNG CÀI ĐẶT HỆ THỐNG (SETTINGS MODAL - ESC) -->
+  <div id="settingsModal" class="wuxia-modal plate" style="width:min(480px, 95vw);">
+    <div class="wuxia-modal-hdr">
+      <h2><span>🛠️</span> Cài Đặt Hệ Thống · Võ Lâm Chibi 3D (Esc)</h2>
+      <button onclick="closeModal3D('settingsModal')" class="wuxia-modal-close">×</button>
+    </div>
+    <div class="wuxia-modal-body" style="font-size:12.5px; line-height:1.8;">
+      <div style="background:rgba(20,13,8,0.7); border:1px solid #4a3420; border-radius:8px; padding:12px; margin-bottom:10px;">
+        <b style="color:#ffd24a; font-size:13.5px; display:block; margin-bottom:6px;">🔊 Âm Thanh:</b>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin:4px 0;">
+          <span>Hiệu ứng võ công SFX:</span>
+          <input type="range" min="0" max="100" value="85" style="width:120px;">
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin:4px 0;">
+          <span>Nhạc nền giang hồ:</span>
+          <input type="range" min="0" max="100" value="70" style="width:120px;">
+        </div>
+      </div>
+      <div style="background:rgba(20,13,8,0.7); border:1px solid #4a3420; border-radius:8px; padding:12px;">
+        <b style="color:#ffd24a; font-size:13.5px; display:block; margin-bottom:6px;">🎮 Đồ Họa & Góc Nhìn 3D:</b>
+        <label style="display:flex; align-items:center; gap:8px; margin:4px 0; cursor:pointer;">
+          <input type="checkbox" checked> Bật bóng đổ mềm thời gian thực (PCF Soft Shadows)
+        </label>
+        <label style="display:flex; align-items:center; gap:8px; margin:4px 0; cursor:pointer;">
+          <input type="checkbox" checked> Tự do xoay chuột phải 360 độ quanh nhân vật
+        </label>
+        <div style="margin-top:8px;">
+          <button class="btn sm" onclick="toggleWeather3D()">🌦️ Đổi Thời Tiết (Nắng/Gió/Mưa/Tuyết)</button>
+        </div>
+      </div>
+    </div>
+    <div class="wuxia-modal-ftr">
+      <button class="btn sm" onclick="window.toast3D('💾 Đã lưu cấu hình hệ thống!'); closeModal3D('settingsModal');" style="background:linear-gradient(180deg,#2b7d44,#124522); border-color:#3bb25d;">Lưu Thiết Lập</button>
+      <button class="btn sm" onclick="closeModal3D('settingsModal')">Đóng (Esc)</button>
+    </div>
+  </div>
+
+  <!-- BẢNG DỊCH TRẠM XA PHU (CHUYỂN MAP 3D CHUẨN VÕ LÂM) -->
+  <div id="xaPhuModal" class="wuxia-modal plate" style="width:min(580px,95vw);">
+    <div class="wuxia-modal-hdr">
+      <h2><span>🐎</span> Dịch Trạm Xa Phu · Giang Sơn Cửu Châu (3D)</h2>
+      <button onclick="closeXaPhuModal()" class="wuxia-modal-close">×</button>
+    </div>
+    <div class="wuxia-modal-body">
+      <!-- TAB PHÂN LOẠI MAP -->
+      <div style="display:flex; gap:6px; margin-bottom:14px; border-bottom:1px solid #4a3824; padding-bottom:8px;">
+        <button class="btn sm" id="xpTabVillage" onclick="switchXaPhuTab('village')" style="flex:1;">🌾 Thôn Trấn</button>
+        <button class="btn sm" id="xpTabCity" onclick="switchXaPhuTab('city')" style="flex:1;">🏯 Thành Thị</button>
+        <button class="btn sm" id="xpTabTrain" onclick="switchXaPhuTab('train')" style="flex:1; background:linear-gradient(180deg,#8a2c16,#4a1008); border-color:#e0604d; color:#ffd24a;">⚔️ Bãi Luyện Công</button>
+      </div>
+      <div id="xaPhuList" style="display:grid; grid-template-columns:1fr; gap:8px;"></div>
+    </div>
+    <div class="wuxia-modal-ftr">
+      <small style="color:var(--paper-dim);">💡 Mẹo: Có thể ấn phím <b>M</b> để xem toàn cảnh bản đồ thế giới bất cứ lúc nào.</small>
+      <button class="btn sm" onclick="closeXaPhuModal()">Đóng (Esc)</button>
+    </div>
+  </div>
+
+  <!-- BẢNG BẢN ĐỒ TOÀN CẢNH THẾ GIỚI 3D -->
+  <div id="mapModal" class="wuxia-modal plate" style="width:min(680px,96vw);">
+    <div class="wuxia-modal-hdr">
+      <h2><span>🗺️</span> Bản Đồ Toàn Cảnh Giang Sơn Cửu Châu (3D)</h2>
+      <button onclick="closeMapModal()" class="wuxia-modal-close">×</button>
+    </div>
+    <div class="wuxia-modal-body">
+      <div style="font-size:12px; line-height:1.5; color:var(--paper-dim); margin-bottom:8px;">Click vào bất kỳ Thôn Trấn, Thành Thị hoặc Bãi Luyện Công để ngựa trạm đưa bạn đến tức thì:</div>
+      <canvas id="worldMapCv" width="640" height="360" style="width:100%; height:auto; border-radius:6px; border:1px solid var(--bronze-dim); background:#120e0a; display:block; cursor:pointer;"></canvas>
+    </div>
+    <div class="wuxia-modal-ftr">
+      <span id="mapHoverInfo" style="color:#ffd24a;">Đang ở: <b id="mapCurrentName">Ba Lăng Huyện</b></span>
+      <button class="btn sm" onclick="closeMapModal()">Đóng</button>
+    </div>
+  </div>
+
+  <!-- BẢNG ĐỐI THOẠI NPC VÕ LÂM CHIBI (DIALOGUE MODAL) -->
+  <div id="npcDialogModal" class="wuxia-modal plate" style="width:min(580px,95vw);">
+    <div class="wuxia-modal-hdr">
+      <div style="display:flex; align-items:center; gap:8px;">
+        <span id="npcDlgIcon" style="font-size:22px;">📜</span>
+        <h2 id="npcDlgTitle" style="margin:0; color:#ffd24a; font-size:16.5px; font-weight:700;">Trưởng Trấn Lý</h2>
+        <span id="npcDlgRole" style="font-size:11px; padding:2px 7px; border-radius:4px; background:#362314; color:#8ef0a0; border:1px solid #6a4c28;">〈Nhiệm Vụ Chính〉</span>
+      </div>
+      <button onclick="closeNpcDialog()" class="wuxia-modal-close">×</button>
+    </div>
+    <div class="wuxia-modal-body">
+      <div style="display:flex; gap:16px; margin-bottom:14px; align-items:flex-start;">
+        <div style="flex-shrink:0; width:112px; text-align:center;">
+          <div style="width:112px; height:120px; border-radius:8px; border:2px solid #8a6234; background:radial-gradient(circle at 50% 40%, #3e2617, #130b07); box-shadow:inset 0 0 14px rgba(0,0,0,0.8), 0 2px 8px rgba(0,0,0,0.5); overflow:hidden; position:relative; margin:0 auto;">
+            <canvas id="npcDlgCanvas" width="160" height="170" style="width:100%; height:100%; display:block;"></canvas>
+          </div>
+          <div id="npcDlgSubName" style="font-size:10.5px; color:#c9b89a; margin-top:5px; font-weight:600;">Ba Lăng Huyện</div>
+        </div>
+        <div style="flex:1; min-width:0;">
+          <div id="npcDlgQuote" style="font-size:13px; line-height:1.6; color:#f5edd8; background:rgba(30,19,13,0.7); padding:10px 12px; border-radius:6px; border-left:3px solid #d4a024; margin-bottom:10px; font-style:italic;">
+            "Thiếu hiệp hãy vượt Cầu Đá Liễu Khê sang rừng dã ngoại để dẹp tan đàn yêu thú bảo vệ thôn xóm!"
+          </div>
+          <div id="npcDlgQuestBox" style="display:none; background:rgba(40,24,14,0.85); border:1px solid #7a5a32; border-radius:6px; padding:10px; margin-bottom:6px; font-size:12px; line-height:1.5;">
+            <div style="color:#ffd24a; font-weight:700; margin-bottom:4px;" id="npcDlgQuestTitle">📜 Nhiệm vụ: Trừ Sói Xám (0/5)</div>
+            <div style="color:#e0cfb4;" id="npcDlgQuestDesc">Tiêu diệt 5 con Sói Xám ngoài bờ sông Liễu Khê.</div>
+            <div style="color:#8ef0a0; margin-top:5px;" id="npcDlgQuestReward">🎁 Thưởng: 5,000 EXP · 1,000 lượng · 5 Bình Kim Sáng Dược</div>
+          </div>
+        </div>
+      </div>
+      <div style="border-top:1px solid #4a3420; padding-top:10px;">
+        <div style="font-size:11.5px; color:#c9b89a; margin-bottom:6px; font-weight:600;">Xin hãy lựa chọn hành động:</div>
+        <div id="npcDlgOptions" style="display:flex; flex-direction:column; gap:7px;"></div>
+      </div>
+    </div>
+    <div class="wuxia-modal-ftr">
+      <span></span>
+      <button class="btn sm" onclick="closeNpcDialog()">🚪 Tạm biệt (Esc)</button>
+    </div>
+  </div>
+
+  <!-- BẢNG HƯỚNG DẪN BÔN TẨU TOÀN TẬP VÕ LÂM CHIBI 3D (CĂN GIỮA CHUẨN XÁC) -->
+  <div id="helpGuideModal" class="wuxia-modal plate" style="width:min(660px,96vw);">
+    <div class="wuxia-modal-hdr">
+      <h2><span>📖</span> Bí Kíp Bôn Tẩu · Hướng Dẫn Giang Hồ (3D)</h2>
+      <button onclick="closeHelpGuideModal()" class="wuxia-modal-close">×</button>
+    </div>
+    <div class="wuxia-modal-body">
+      <!-- TAB PHÂN LOẠI HƯỚNG DẪN -->
+      <div style="display:flex; gap:6px; margin-bottom:12px; border-bottom:1px solid #4a3824; padding-bottom:8px;">
+        <button class="btn sm" id="hgTabMove" onclick="switchGuideTab('move')" style="flex:1; font-weight:700; background:linear-gradient(180deg,#c8902a,#7a5212); border-color:#ffd24a; color:#ffd24a;">🎮 Chuột & Di Chuyển</button>
+        <button class="btn sm" id="hgTabSkill" onclick="switchGuideTab('skill')" style="flex:1;">⚔️ Võ Công & Phím Tắt</button>
+        <button class="btn sm" id="hgTabQuest" onclick="switchGuideTab('quest')" style="flex:1;">📜 Nhiệm Vụ & NPC</button>
+        <button class="btn sm" id="hgTabMap" onclick="switchGuideTab('map')" style="flex:1;">🐎 Dịch Trạm & Bản Đồ</button>
+      </div>
+      <!-- NỘI DUNG TỪNG TAB HƯỚNG DẪN -->
+      <div id="hgContent" style="font-size:12.5px; line-height:1.65; color:#f1e5c9; background:rgba(20,13,8,0.7); padding:12px; border-radius:8px; border:1px solid #4a3420;"></div>
+    </div>
+    <div class="wuxia-modal-ftr">
+      <small style="color:var(--paper-dim);">💡 Mẹo: Nhấn phím <b>H</b> để mở nhanh bảng hướng dẫn này bất cứ lúc nào.</small>
+      <button class="btn sm" onclick="closeHelpGuideModal()">Đóng (Esc)</button>
+    </div>
+  </div>
+
+  <!-- BẢNG BÁI NHẬP MÔN PHÁI & VÕ CÔNG 3D -->
+  <div id="factionModal" class="wuxia-modal plate" style="width:min(720px,96vw);">
+    <div class="wuxia-modal-hdr">
+      <h2><span>⚔️</span> Bái Nhập Môn Phái · Thập Đại Phái Võ Lâm</h2>
+      <button onclick="closeFactionModal()" class="wuxia-modal-close">×</button>
+    </div>
+    <div class="wuxia-modal-body">
+      <p style="margin:0 0 10px; font-size:12px; color:#c9b89a;">
+        Mỗi môn phái sở hữu thuộc tính Ngũ Hành tương sinh tương khắc và bộ tuyệt kỹ võ công 3D hoàn toàn riêng biệt. Hãy chọn môn phái để xuất chiêu:
+      </p>
+      <div id="factionList" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(230px, 1fr)); gap:10px;"></div>
+    </div>
+    <div class="wuxia-modal-ftr">
+      <small style="color:var(--paper-dim);">💡 Mẹo: Nhấn phím <b>K</b> để mở bảng môn phái bất cứ lúc nào.</small>
+      <button class="btn sm" onclick="closeFactionModal()">Đóng (Esc)</button>
+    </div>
+  </div>
+
+  <script src="js/cau-hinh-phai-3d.js"></script>
+  <script src="js/skill-balance-3d.js"></script>
+  <script src="js/fx2d_engine.js"></script>
+<script src="js/skill-vfx-parity-3d.js"></script>
+  <script src="js/game3d.js"></script>
+  <script src="js/ui-system-3d.js"></script>
+</body>
+</html>

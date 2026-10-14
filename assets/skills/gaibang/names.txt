@@ -1,0 +1,16 @@
+115=Cái Bang Bổng pháp
+116=Cái Bang Chưởng Pháp
+118=Cô Mộc Độn Lôi
+119=Diên Môn Thác Bát
+122=Kiến Nhân Thần Thủ
+124=Đả Cẩu Bổng Pháp
+125=Bổng Đả ác Cẩu
+127=Hoạt Bất Lưu Thủ 11
+128=Kháng Long Hữu Hối
+129=Hóa Hiểm Vi Di
+130=Túy Điệp Cuồng Vũ
+274=Giáng Long Chưởng
+277=Hoạt Bất Lưu Thủ
+357=Phi Long Tại Thiên
+359=Thiên Hạ Vô Cẩu
+360=Tiêu Diêu Công
